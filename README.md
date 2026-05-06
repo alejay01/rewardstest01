@@ -50,6 +50,7 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 Keep the first version small and reliable:
 
 - Customers sign up with phone number and optional email.
+- Staff can manually add a customer and credit points for confirmed visits.
 - The system tracks consent, rewards, coupons, and redemptions.
 - Hosting is ready, so app scaffolding and database setup can begin.
 - SMS starts in no-send/log-only mode until Telnyx and 10DLC are ready.
