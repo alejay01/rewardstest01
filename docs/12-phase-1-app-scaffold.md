@@ -31,7 +31,8 @@ http://theboudincompany.com/test/rewards
 | `public_html/test/rewards/_includes/database.php` | PDO connection helper and database status check. |
 | `public_html/test/rewards/assets/css/app.css` | Responsive app styling. |
 | `public_html/test/rewards/assets/js/app.js` | PWA registration and coupon-code input cleanup. |
-| `public_html/test/rewards/assets/img/boudin-rewards-mark.svg` | App mark/icon. |
+| `public_html/test/rewards/assets/img/boudin-logo-icon.svg` | Icon-only restaurant logo. |
+| `public_html/test/rewards/assets/img/boudin-logo-wordmark.svg` | Restaurant logo with wordmark. |
 | `public_html/test/rewards/manifest.json` | PWA manifest. |
 | `public_html/test/rewards/service-worker.js` | Basic app shell cache. |
 | `public_html/test/rewards/.htaccess` | Directory listing disabled and sensitive-file blocking. |
