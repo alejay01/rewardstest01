@@ -17,6 +17,10 @@ $manualResult = null;
 $manualFirstName = trim((string)($_POST['first_name'] ?? ''));
 $manualPhone = trim((string)($_POST['phone'] ?? ''));
 $manualEmail = trim((string)($_POST['email'] ?? ''));
+$visitSubmitted = $_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'credit_visit';
+$visitResult = null;
+$visitPhone = trim((string)($_POST['visit_phone'] ?? ''));
+$visitNote = trim((string)($_POST['visit_note'] ?? ''));
 
 if ($manualSubmitted) {
     $manualResult = rewards_create_customer([
@@ -27,6 +31,10 @@ if ($manualSubmitted) {
         'source_type' => 'admin',
         'sms_consent' => isset($_POST['sms_consent']),
     ]);
+}
+
+if ($visitSubmitted) {
+    $visitResult = rewards_credit_visit($visitPhone, $visitNote);
 }
 
 render_header('Admin', 'Admin preview');
@@ -115,6 +123,35 @@ render_header('Admin', 'Admin preview');
     </label>
     <div class="form-actions">
       <button class="button primary" type="submit">Add Customer</button>
+    </div>
+  </form>
+</section>
+
+<section class="panel">
+  <h2>Credit Visit Points</h2>
+  <p>Use this after a staff-confirmed visit. The current pilot rule credits 10 points per visit.</p>
+  <?php if ($visitSubmitted && $visitResult !== null): ?>
+    <div class="notice <?= $visitResult['ok'] ? 'success' : '' ?>">
+      <?= h((string)$visitResult['message']) ?>
+      <?php if ($visitResult['ok'] && isset($visitResult['phone'])): ?>
+        <div class="form-actions">
+          <a class="button" href="wallet.php?phone=<?= h(urlencode((string)$visitResult['phone'])) ?>">Open Wallet</a>
+        </div>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
+  <form method="post" action="admin.php" class="stack">
+    <input type="hidden" name="action" value="credit_visit">
+    <label>
+      Customer mobile number
+      <input name="visit_phone" inputmode="tel" autocomplete="tel" value="<?= h($visitPhone) ?>" placeholder="713-555-0100" required>
+    </label>
+    <label>
+      Visit note
+      <input name="visit_note" value="<?= h($visitNote) ?>" placeholder="Optional register, receipt, or staff note">
+    </label>
+    <div class="form-actions">
+      <button class="button primary" type="submit">Credit Visit</button>
     </div>
   </form>
 </section>
