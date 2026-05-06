@@ -1,6 +1,11 @@
 DirectoryIndex index.php
 Options -Indexes
 
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^_includes/ - [F,L]
+</IfModule>
+
 <FilesMatch "\.(env|ini|log|sql|bak)$">
   Require all denied
 </FilesMatch>
