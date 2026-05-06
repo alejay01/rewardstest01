@@ -35,6 +35,7 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 - [Source Notes](docs/09-source-notes.md)
 - [SMS Development Workaround](docs/10-sms-development-workaround.md)
 - [Hosting Ready Handoff](docs/11-hosting-ready-handoff.md)
+- [Phase 1 App Scaffold](docs/12-phase-1-app-scaffold.md)
 - [Draft MySQL Schema](database/schema-draft.sql)
 - [Pilot Seed Data](database/seed-boudin-company.sql)
 
