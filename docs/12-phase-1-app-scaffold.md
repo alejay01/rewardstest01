@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-05-06
 
-The first coding phase is a PHP/PWA scaffold for the HostGator/cPanel test path. It now includes a safe MySQL config pattern and connection status check, but forms still do not write customer records yet.
+The first coding phase is a PHP/PWA scaffold for the HostGator/cPanel test path. It now includes a safe MySQL config pattern, connection status check, customer signup, wallet lookup, and staff-confirmed visit crediting.
 
 Upload target:
 
@@ -21,11 +21,12 @@ https://theboudincompany.com/test/rewards
 | Path | Purpose |
 | --- | --- |
 | `public_html/test/rewards/index.php` | Status page and route index. |
-| `public_html/test/rewards/join.php` | Customer signup and SMS consent preview. |
-| `public_html/test/rewards/wallet.php` | Mock customer wallet and coupon view. |
+| `public_html/test/rewards/join.php` | Customer signup and optional SMS consent capture. |
+| `public_html/test/rewards/wallet.php` | Customer wallet lookup with real points and recent point activity. |
 | `public_html/test/rewards/redeem.php` | Staff QR/short-code redemption preview. |
 | `public_html/test/rewards/qrcode.php` | Signup QR generator for source-tagged links. |
-| `public_html/test/rewards/admin.php` | Admin launch-gate preview. |
+| `public_html/test/rewards/admin.php` | Admin launch gates, manual customer add, QR link, and visit point crediting. |
+| `public_html/test/rewards/_includes/rewards.php` | Reward/customer helper functions for signup, lookup, and visit crediting. |
 | `public_html/test/rewards/_includes/bootstrap.php` | Shared app settings, helpers, header, and footer. |
 | `public_html/test/rewards/_includes/config.example.php` | Safe committed config template with placeholder password. |
 | `public_html/test/rewards/_includes/config.local.php` | Real server-only config file. Do not commit this file. |
@@ -52,20 +53,18 @@ The committed example uses:
 
 The real password belongs only in `_includes/config.local.php` on the server. The app will not try to connect with the placeholder password.
 
-The signup form and admin quick-add form can now save customer records and optional SMS consent events. SMS remains log-only and no text message is sent.
+The signup form and admin quick-add form can now save customer records and optional SMS consent events. Admin can also credit staff-confirmed visit points. SMS remains log-only and no text message is sent.
 
-The later database layer should wire these screens to:
+The current database layer uses:
 
 - `customers`
 - `customer_consents`
 - `signup_sources`
 - `visits`
-- `coupons`
-- `customer_coupons`
-- `coupon_redemptions`
-- `notification_deliveries`
-- `audit_logs`
-- `business_settings`
+- `reward_rules`
+- `points_ledger`
+
+Later phases should wire these screens to coupons, coupon redemptions, notification deliveries, audit logs, and business settings.
 
 ## SQL Import
 
@@ -86,7 +85,7 @@ After upload:
 1. Open `https://theboudincompany.com/test/rewards`.
 2. Confirm the status page loads.
 3. Open `join.php` and submit a test signup preview.
-4. Open `wallet.php` and confirm mock coupon display.
-5. Open `redeem.php` and submit a mock short code such as `BC100PT`.
-6. Open `admin.php` and confirm live SMS is shown as blocked.
-7. Enable SSL when ready; service worker installation generally requires HTTPS outside localhost.
+4. Open `wallet.php`, enter the same phone number, and confirm the customer wallet loads.
+5. Open `admin.php`, credit a visit for that phone number, then reopen the wallet and confirm points increased.
+6. Open `redeem.php` and submit a mock short code such as `BC100PT`.
+7. Confirm live SMS is shown as blocked.
