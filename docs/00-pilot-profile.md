@@ -15,7 +15,7 @@ Last reviewed: 2026-05-06
 | Phone | 713-561-5645 |
 | Normalized phone | +17135615645 |
 | Time zone | America/Chicago |
-| SMS provider | Telelinux |
+| SMS provider | Telnyx |
 | Points earning basis | Visit |
 | Draft points value | 10 points per staff-confirmed visit |
 | Redemption methods | QR scan and manual short-code entry |
@@ -23,23 +23,24 @@ Last reviewed: 2026-05-06
 ## Pilot Assumptions
 
 - The Rosenberg location is the first deployment.
-- SMS messaging will use Telelinux once API credentials and documentation are available.
+- SMS messaging will use Telnyx once account access, API keys, a Messaging Profile, and sender registration are ready.
 - Marketing SMS still needs clear opt-in language, opt-out handling, HELP handling, and business texting registration/compliance review.
 - QR signup should default to this location unless another location is added.
 - Version 1 rewards should use staff-confirmed visits. Spend-based points can be considered later if POS integration is added.
 - Staff redemption should support both QR scanning and manual short-code entry.
 
-## Telelinux Information Needed Before Build
+## Telnyx Information Needed Before Build
 
 To implement the SMS adapter, collect:
 
-- API base URL.
-- Authentication method.
-- Send SMS endpoint.
-- Inbound SMS webhook format.
-- Delivery receipt webhook format.
+- Telnyx API key.
+- Messaging Profile ID.
+- Send SMS endpoint configuration.
+- Inbound SMS webhook URL and payload format.
+- Delivery status webhook URL and payload format.
+- Webhook public key/signature verification details.
 - Sender number or sender ID configuration.
-- 10DLC, toll-free, or other U.S. business texting registration requirements.
+- 10DLC, toll-free, or other U.S. business texting registration status.
 - Per-message pricing and carrier fee structure.
 - Rate limits and daily/monthly volume limits.
 - Required STOP/HELP behavior.
@@ -53,7 +54,7 @@ Join The Boudin Company Rewards for special offers, coupons, and reward updates.
 ## Suggested SMS Opt-In Copy
 
 ```text
-By checking this box, I agree to receive recurring automated marketing text messages from The Boudin Company at the phone number provided. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out and HELP for help. See Terms and Privacy Policy.
+Yes, I agree to receive recurring automated marketing text messages from The Boudin Company Rewards at the mobile number I provide. Message frequency varies, up to 4 messages per month. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out and HELP for help. I agree to the Rewards Terms and Privacy Policy.
 ```
 
 ## Suggested Welcome Text

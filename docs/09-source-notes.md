@@ -13,7 +13,13 @@ These sources were checked while preparing the planning package. Pricing and pro
 
 ## SMS
 
-- Telelinux is selected for the pilot, but public API/provider documentation was not confirmed during the initial planning pass. Add the official Telelinux API documentation here once received from the provider.
+- Telnyx is selected for the pilot SMS provider: https://telnyx.com/
+- Telnyx SMS API product page: https://telnyx.com/products/sms-api
+- Telnyx Messaging API docs: https://developers.telnyx.com/docs/messaging
+- Telnyx receive message webhooks: https://developers.telnyx.com/docs/messaging/messages/receive-message
+- Telnyx messaging webhook verification and delivery events: https://developers.telnyx.com/docs/messaging/messages/receiving-webhooks
+- Telnyx 10DLC registration guide: https://support.telnyx.com/en/articles/6325731-register-for-10dlc-messaging
+- Telnyx 10DLC campaign checklist: https://support.telnyx.com/en/articles/9038141-messaging-10dlc-campaign-checklist
 - Twilio A2P 10DLC campaign approval requirements: https://help.twilio.com/hc/en-us/articles/11847054539547-A2P-10DLC-Campaign-Approval-Requirements
 - Telnyx messaging pricing: https://telnyx.com/pricing/messaging/
 - Telnyx 10DLC FAQ: https://support.telnyx.com/en/articles/3679260-frequently-asked-questions-about-10dlc

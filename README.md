@@ -12,7 +12,7 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 
 - Backend: PHP 8.x and MySQL/MariaDB on cPanel.
 - Customer app: installable PWA that works in browser, Android, iPhone, Windows, and desktop.
-- Messaging: Telelinux is the selected SMS provider for the pilot. Telnyx and Twilio remain documented as backup options.
+- Messaging: Telnyx is the selected SMS provider for the pilot. Twilio remains documented as a backup option.
 - Rewards: points are earned by visit for version 1, using staff-confirmed visits.
 - Redemption: staff can redeem coupons by scanning a QR code or manually entering a short code.
 - Push notifications: OneSignal for web push and later mobile-style messaging flows.
@@ -38,7 +38,7 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 
 ## Immediate Decisions Needed
 
-1. Confirm Telelinux API credentials, endpoint documentation, webhook support, sender number, and 10DLC/business texting process.
+1. Confirm Telnyx account access, API key, Messaging Profile, sender number, webhook URLs, and 10DLC/business texting process.
 2. Owner/legal review and publish the prepared SMS opt-in language, privacy policy, and rewards terms before sending marketing texts.
 
 ## Build Philosophy

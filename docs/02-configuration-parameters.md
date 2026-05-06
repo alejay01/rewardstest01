@@ -66,7 +66,7 @@ These are the parameters the system should support before development starts. Th
 
 | Parameter | Example | Notes |
 | --- | --- | --- |
-| SMS provider | Telelinux | Selected for the pilot; adapter details depend on Telelinux API docs. |
+| SMS provider | Telnyx | Selected for the pilot; adapter should use the Telnyx Messaging API. |
 | Email provider | Brevo | Provider should be swappable. |
 | Push provider | OneSignal | Good for PWA/web push. |
 | Quiet hours | 9 PM to 9 AM | Avoid late marketing. |

@@ -65,7 +65,7 @@ If you opt in to email or push notifications, we may send rewards updates, coupo
 We may share information with service providers that help us operate the rewards program, such as:
 
 - Website, hosting, database, and security providers.
-- SMS providers, including Telelinux or a replacement provider if needed.
+- SMS providers, including Telnyx or a replacement provider if needed.
 - Email and push notification providers.
 - Analytics, reporting, and fraud-prevention tools.
 - Professional advisors, legal counsel, or authorities when required by law or needed to protect rights, safety, or security.

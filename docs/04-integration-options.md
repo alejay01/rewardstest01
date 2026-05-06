@@ -6,7 +6,7 @@ Last reviewed: 2026-05-06
 
 | Need | First Choice | Backup Choice | Reason |
 | --- | --- | --- | --- |
-| SMS API | Telelinux | Telnyx or Twilio | Telelinux is selected for the pilot; Telnyx/Twilio remain backup API paths. |
+| SMS API | Telnyx | Twilio | Telnyx is selected for the pilot; Twilio remains the backup API path. |
 | Web/app push | OneSignal | Firebase Cloud Messaging | OneSignal is faster to launch; FCM is no-cost but more engineering. |
 | Email marketing | Brevo | OneSignal Email or custom SMTP | Brevo is affordable and has automation. |
 | Customer app | PWA | Native app later | PWA is cheapest and easiest to replicate. |
@@ -15,42 +15,35 @@ Last reviewed: 2026-05-06
 
 ## SMS Options
 
-### Telelinux
+### Telnyx
 
 Selected SMS provider for The Boudin Company pilot.
 
-Use Telelinux for:
+Use Telnyx for:
 
 - Customer signup confirmation texts.
 - Reward and coupon notifications.
 - Marketing SMS after opt-in.
-- STOP/HELP handling if supported through inbound SMS webhooks.
-- Delivery status updates if supported.
+- STOP/HELP handling through inbound SMS webhooks.
+- Delivery status updates through messaging webhooks.
 
 Before development, confirm:
 
-- API endpoint and authentication method.
-- Outbound SMS request/response format.
-- Inbound message webhook format.
-- Delivery receipt webhook format.
-- Sender number or sender ID setup.
-- U.S. business texting registration requirements.
+- Telnyx account access and billing.
+- API key and production key storage location.
+- Messaging Profile ID.
+- Sender number, hosted SMS number, toll-free number, or other sender type.
+- 10DLC Brand and Campaign registration status for U.S. long-code SMS.
+- Outbound SMS request/response format for `POST /v2/messages`.
+- Inbound message webhook URL.
+- Delivery status webhook URL.
+- Webhook signature verification using Telnyx public key.
 - Price per message segment and carrier fees.
 - Rate limits and daily/monthly sending limits.
 
-If Telelinux does not provide reliable API/webhook support, use the same internal `SmsProvider` interface with Telnyx or Twilio as a fallback.
+Current public Telnyx messaging pages list SMS pricing starting at $0.004 per message, but final cost depends on sender type, destination, carrier fees, registration fees, and volume.
 
-### Telnyx
-
-Backup option for cost-sensitive API-based SMS.
-
-Current public pricing page lists local/10DLC SMS at $0.004 per message part plus carrier fees. Pricing varies by sender type, carrier, destination, and volume.
-
-Use Telnyx if:
-
-- Cost matters more than hand-holding.
-- We are comfortable building the SMS logic.
-- We want an API-first provider with good carrier control.
+Telnyx is a good fit because it is API-first, supports send/receive SMS and MMS, supports 10DLC registration workflows, and provides webhooks for inbound messages and delivery status. The restaurant system should still record opt-ins, opt-outs, HELP requests, message attempts, and delivery events internally.
 
 ### Twilio
 

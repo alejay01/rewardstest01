@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-05-06
 
-This is draft copy for The Boudin Company Rewards. Do not send marketing SMS until the business has reviewed the copy, published the linked privacy policy and terms, and confirmed Telelinux registration and opt-out handling.
+This is draft copy for The Boudin Company Rewards. Do not send marketing SMS until the business has reviewed the copy, published the linked privacy policy and terms, and confirmed Telnyx registration and opt-out handling.
 
 ## Primary Signup Form Copy
 
@@ -65,10 +65,10 @@ Only mark SMS marketing consent as opted in after the customer replies `YES`.
 
 ## SMS Keyword Signup Flow
 
-If Telelinux supports SMS keyword signup, publish this instruction wherever the keyword is advertised:
+If Telnyx supports SMS keyword signup for the selected sender number, publish this instruction wherever the keyword is advertised:
 
 ```text
-Text JOIN to [Telelinux Number] to join The Boudin Company Rewards texts. Msg freq varies, up to 4/mo. Msg&data rates may apply. Reply STOP to cancel, HELP for help. Terms and Privacy Policy apply.
+Text JOIN to [Telnyx Number] to join The Boudin Company Rewards texts. Msg freq varies, up to 4/mo. Msg&data rates may apply. Reply STOP to cancel, HELP for help. Terms and Privacy Policy apply.
 ```
 
 Auto-reply after `JOIN`:
@@ -85,7 +85,7 @@ The Boudin Company Rewards: You are subscribed. Msg freq varies, up to 4/mo. Msg
 
 ## Standard Confirmation Message
 
-Send immediately after web, QR, or kiosk opt-in if Telelinux supports confirmation messages.
+Send immediately after web, QR, or kiosk opt-in.
 
 ```text
 The Boudin Company Rewards: You are subscribed. Msg freq varies, up to 4/mo. Msg&data rates may apply. Reply HELP for help or STOP to cancel.

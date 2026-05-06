@@ -30,18 +30,20 @@ Last reviewed: 2026-05-06
 - Review and approve `docs/legal/rewards-terms-template.md`.
 - Publish privacy policy and rewards terms at public URLs.
 - Add privacy policy and terms links beside the SMS opt-in checkbox.
-- Save screenshots of the signup page, QR flow, and kiosk flow for Telelinux/business texting registration.
+- Save screenshots of the signup page, QR flow, and kiosk flow for Telnyx/business texting registration.
 - Store policy and terms version as `boudin-rewards-2026-05-06-v1` unless the published copy changes.
 
 ## Provider Setup
 
 ### SMS
 
-- Register or confirm Telelinux provider account.
+- Register or confirm Telnyx provider account.
 - Complete Brand and Campaign/10DLC registration.
 - Purchase or assign sending number.
+- Create or confirm Messaging Profile.
 - Configure inbound webhook URL.
 - Configure delivery receipt webhook URL.
+- Configure webhook signature verification.
 - Test STOP and HELP.
 - Test send to internal phones only before public launch.
 
