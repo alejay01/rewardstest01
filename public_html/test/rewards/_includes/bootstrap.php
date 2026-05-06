@@ -5,6 +5,20 @@ date_default_timezone_set('America/Chicago');
 
 require_once __DIR__ . '/database.php';
 
+function send_no_cache_headers(): void
+{
+    if (headers_sent()) {
+        return;
+    }
+
+    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+    header('Cache-Control: post-check=0, pre-check=0', false);
+    header('Pragma: no-cache');
+    header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
+}
+
+send_no_cache_headers();
+
 $app = [
     'name' => 'The Boudin Company Rewards',
     'restaurant' => 'The Boudin Company',
