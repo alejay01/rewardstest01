@@ -1,0 +1,22 @@
+.notice.success {
+  background: #e3f5eb;
+  border-color: #a6d7bd;
+}
+
+.qr-preview {
+  text-align: center;
+}
+
+.qr-preview img {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  height: auto;
+  margin: 16px auto;
+  max-width: 100%;
+}
+
+.small-text {
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
