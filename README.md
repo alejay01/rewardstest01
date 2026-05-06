@@ -34,13 +34,15 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 - [Deployment Checklist](docs/08-deployment-checklist.md)
 - [Source Notes](docs/09-source-notes.md)
 - [SMS Development Workaround](docs/10-sms-development-workaround.md)
+- [Hosting Ready Handoff](docs/11-hosting-ready-handoff.md)
 - [Draft MySQL Schema](database/schema-draft.sql)
 - [Pilot Seed Data](database/seed-boudin-company.sql)
 
 ## Immediate Decisions Needed
 
-1. Build can proceed in `log_only` SMS mode while Telnyx account access, API key, Messaging Profile, sender number, webhook URLs, and 10DLC/business texting process are pending.
-2. Before live marketing SMS, confirm Telnyx setup, owner/legal approval, and published SMS opt-in, privacy policy, and rewards terms.
+1. Hosting is ready. Next setup items are the public domain/subdomain, document root path, PHP version, MySQL database, and non-public config location.
+2. Build can proceed in `log_only` SMS mode while Telnyx account access, API key, Messaging Profile, sender number, webhook URLs, and 10DLC/business texting process are pending.
+3. Before live marketing SMS, confirm Telnyx setup, owner/legal approval, and published SMS opt-in, privacy policy, and rewards terms.
 
 ## Build Philosophy
 
@@ -48,6 +50,7 @@ Keep the first version small and reliable:
 
 - Customers sign up with phone number and optional email.
 - The system tracks consent, rewards, coupons, and redemptions.
+- Hosting is ready, so app scaffolding and database setup can begin.
 - SMS starts in no-send/log-only mode until Telnyx and 10DLC are ready.
 - Staff can redeem rewards quickly at the counter.
 - Admins can create specials and send compliant notifications.
