@@ -10,6 +10,8 @@ Draft legal copy has been prepared in [Legal Draft Package](legal/README.md). Tr
 
 For U.S. marketing SMS, the system should require clear consent before sending promotional texts.
 
+During development, SMS may run in `log_only` mode. That mode may store intended message records and simulate inbound consent or opt-out events, but it must not send real marketing texts.
+
 Store:
 
 - Customer phone number.
@@ -24,6 +26,8 @@ Store:
 ## 10DLC Registration
 
 U.S. application-to-person messaging using local 10-digit numbers requires 10DLC registration.
+
+10DLC registration is a live SMS launch gate, not a blocker for building signup, consent storage, coupon generation, campaign previews, or logged message queues.
 
 Registration normally includes:
 
