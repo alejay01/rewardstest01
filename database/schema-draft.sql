@@ -31,6 +31,18 @@ CREATE TABLE locations (
   CONSTRAINT fk_locations_business FOREIGN KEY (business_id) REFERENCES businesses(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE business_settings (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  business_id BIGINT UNSIGNED NOT NULL,
+  setting_key VARCHAR(120) NOT NULL,
+  setting_value TEXT NULL,
+  is_secret TINYINT(1) NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uq_business_setting (business_id, setting_key),
+  CONSTRAINT fk_business_settings_business FOREIGN KEY (business_id) REFERENCES businesses(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE admin_users (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   business_id BIGINT UNSIGNED NOT NULL,
