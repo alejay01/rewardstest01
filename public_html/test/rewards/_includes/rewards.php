@@ -46,6 +46,215 @@ function rewards_signup_source(PDO $pdo, int $businessId, string $sourceCode): ?
     return is_array($source) ? $source : null;
 }
 
+function rewards_customer_by_phone(PDO $pdo, string $phone): ?array
+{
+    $normalizedPhone = normalize_phone_e164($phone);
+    if ($normalizedPhone === '') {
+        return null;
+    }
+
+    $business = rewards_business($pdo);
+    if ($business === null) {
+        return null;
+    }
+
+    $stmt = $pdo->prepare(
+        'SELECT c.*, l.name AS location_name
+         FROM customers c
+         LEFT JOIN locations l ON l.id = c.primary_location_id
+         WHERE c.business_id = :business_id AND c.phone_e164 = :phone
+         ORDER BY c.id
+         LIMIT 1'
+    );
+    $stmt->execute([
+        'business_id' => (int)$business['id'],
+        'phone' => $normalizedPhone,
+    ]);
+    $customer = $stmt->fetch();
+
+    return is_array($customer) ? $customer : null;
+}
+
+function rewards_recent_points(PDO $pdo, int $customerId, int $limit = 6): array
+{
+    $stmt = $pdo->prepare(
+        'SELECT points_delta, balance_after, reason, note, created_at
+         FROM points_ledger
+         WHERE customer_id = :customer_id
+         ORDER BY created_at DESC, id DESC
+         LIMIT ' . max(1, min(20, $limit))
+    );
+    $stmt->execute(['customer_id' => $customerId]);
+
+    return $stmt->fetchAll();
+}
+
+function rewards_visit_rule(PDO $pdo, int $businessId, ?int $locationId): ?array
+{
+    $stmt = $pdo->prepare(
+        'SELECT *
+         FROM reward_rules
+         WHERE business_id = :business_id
+           AND rule_type = \'visit\'
+           AND is_active = 1
+           AND (location_id IS NULL OR location_id = :location_id)
+           AND (starts_at IS NULL OR starts_at <= CURRENT_TIMESTAMP)
+           AND (ends_at IS NULL OR ends_at >= CURRENT_TIMESTAMP)
+         ORDER BY location_id DESC, id
+         LIMIT 1'
+    );
+    $stmt->execute([
+        'business_id' => $businessId,
+        'location_id' => $locationId,
+    ]);
+    $rule = $stmt->fetch();
+
+    return is_array($rule) ? $rule : null;
+}
+
+function rewards_credit_visit(string $phone, string $note = ''): array
+{
+    $normalizedPhone = normalize_phone_e164($phone);
+    if ($normalizedPhone === '') {
+        return [
+            'ok' => false,
+            'message' => 'Phone number is required.',
+        ];
+    }
+
+    try {
+        $pdo = db_connection();
+        $customer = rewards_customer_by_phone($pdo, $normalizedPhone);
+
+        if ($customer === null) {
+            return [
+                'ok' => false,
+                'message' => 'Customer was not found. Add the customer record first.',
+            ];
+        }
+
+        $businessId = (int)$customer['business_id'];
+        $locationId = $customer['primary_location_id'] !== null ? (int)$customer['primary_location_id'] : null;
+        if ($locationId === null) {
+            $location = rewards_location($pdo, $businessId);
+            $locationId = $location !== null ? (int)$location['id'] : null;
+        }
+
+        if ($locationId === null) {
+            return [
+                'ok' => false,
+                'message' => 'No active location was found for visit credit.',
+            ];
+        }
+
+        $rule = rewards_visit_rule($pdo, $businessId, $locationId);
+        $points = $rule !== null ? (int)$rule['points_value'] : 10;
+        $ruleId = $rule !== null ? (int)$rule['id'] : null;
+
+        $pdo->beginTransaction();
+
+        $stmt = $pdo->prepare(
+            'INSERT INTO visits (
+                customer_id,
+                location_id,
+                reward_rule_id,
+                visit_date,
+                points_awarded,
+                verification_method,
+                status,
+                note
+            ) VALUES (
+                :customer_id,
+                :location_id,
+                :reward_rule_id,
+                CURRENT_DATE,
+                :points_awarded,
+                \'staff_confirmed\',
+                \'approved\',
+                NULLIF(:note, \'\')
+            )'
+        );
+        $stmt->execute([
+            'customer_id' => (int)$customer['id'],
+            'location_id' => $locationId,
+            'reward_rule_id' => $ruleId,
+            'points_awarded' => $points,
+            'note' => $note,
+        ]);
+        $visitId = (int)$pdo->lastInsertId();
+
+        $newBalance = (int)$customer['points_balance'] + $points;
+
+        $stmt = $pdo->prepare(
+            'UPDATE customers
+             SET points_balance = :points_balance,
+                 last_visit_at = CURRENT_TIMESTAMP,
+                 updated_at = CURRENT_TIMESTAMP
+             WHERE id = :customer_id'
+        );
+        $stmt->execute([
+            'points_balance' => $newBalance,
+            'customer_id' => (int)$customer['id'],
+        ]);
+
+        $stmt = $pdo->prepare(
+            'INSERT INTO points_ledger (
+                customer_id,
+                location_id,
+                reward_rule_id,
+                visit_id,
+                points_delta,
+                balance_after,
+                reason,
+                reference_type,
+                reference_id,
+                note
+            ) VALUES (
+                :customer_id,
+                :location_id,
+                :reward_rule_id,
+                :visit_id,
+                :points_delta,
+                :balance_after,
+                \'visit\',
+                \'visits\',
+                :reference_id,
+                NULLIF(:note, \'\')
+            )'
+        );
+        $stmt->execute([
+            'customer_id' => (int)$customer['id'],
+            'location_id' => $locationId,
+            'reward_rule_id' => $ruleId,
+            'visit_id' => $visitId,
+            'points_delta' => $points,
+            'balance_after' => $newBalance,
+            'reference_id' => $visitId,
+            'note' => $note,
+        ]);
+
+        $pdo->commit();
+
+        return [
+            'ok' => true,
+            'message' => 'Visit credited. ' . $points . ' points added.',
+            'phone' => $normalizedPhone,
+            'points_added' => $points,
+            'points_balance' => $newBalance,
+            'visit_id' => $visitId,
+        ];
+    } catch (Throwable $exception) {
+        if (isset($pdo) && $pdo instanceof PDO && $pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+
+        return [
+            'ok' => false,
+            'message' => 'Visit was not credited: ' . $exception->getMessage(),
+        ];
+    }
+}
+
 function rewards_create_customer(array $input): array
 {
     global $app;
