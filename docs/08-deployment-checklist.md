@@ -4,7 +4,9 @@ Last reviewed: 2026-05-06
 
 ## cPanel Setup
 
-- Create subdomain or path, for example `rewards.example.com`.
+- Hosting account ready.
+- Confirm public domain/subdomain or path, for example `rewards.example.com`.
+- Confirm document root path.
 - Enable SSL.
 - Select PHP 8.1+ where available.
 - Create MySQL database.
@@ -12,9 +14,12 @@ Last reviewed: 2026-05-06
 - Store database credentials outside public web root when possible.
 - Set file permissions conservatively.
 - Configure cron jobs for queued sends and automation.
+- Confirm whether Git deployment, FTP/SFTP upload, or cPanel File Manager upload will be used.
 
 ## Database Setup
 
+- Create database and user in cPanel MySQL Databases.
+- Save credentials outside the repository.
 - Import schema.
 - Create initial business record.
 - Create first location.
@@ -22,6 +27,7 @@ Last reviewed: 2026-05-06
 - Create default reward settings.
 - Create default coupon templates.
 - Create consent policy version.
+- Confirm seed default `sms.mode = log_only` before any SMS testing.
 
 ## Legal Page Setup
 
@@ -87,6 +93,8 @@ Last reviewed: 2026-05-06
 - Add CSRF tokens to admin forms.
 - Validate and rate-limit public forms.
 - Do not expose provider API keys in JavaScript.
+- Do not commit hosting, database, or provider credentials to GitHub.
+- Keep production config outside public web root.
 - Log admin actions.
 - Back up database daily.
 - Test restore process.
