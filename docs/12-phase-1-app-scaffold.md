@@ -13,7 +13,7 @@ public_html/test/rewards
 Public test URL:
 
 ```text
-http://theboudincompany.com/test/rewards
+https://theboudincompany.com/test/rewards
 ```
 
 ## Current Files
@@ -24,6 +24,7 @@ http://theboudincompany.com/test/rewards
 | `public_html/test/rewards/join.php` | Customer signup and SMS consent preview. |
 | `public_html/test/rewards/wallet.php` | Mock customer wallet and coupon view. |
 | `public_html/test/rewards/redeem.php` | Staff QR/short-code redemption preview. |
+| `public_html/test/rewards/qrcode.php` | Signup QR generator for source-tagged links. |
 | `public_html/test/rewards/admin.php` | Admin launch-gate preview. |
 | `public_html/test/rewards/_includes/bootstrap.php` | Shared app settings, helpers, header, and footer. |
 | `public_html/test/rewards/_includes/config.example.php` | Safe committed config template with placeholder password. |
@@ -50,7 +51,7 @@ The committed example uses:
 
 The real password belongs only in `_includes/config.local.php` on the server. The app will not try to connect with the placeholder password.
 
-Forms still preview the shape of the data that will later be saved, but they do not persist customer records, consent events, coupons, or redemptions.
+The signup form and admin quick-add form can now save customer records and optional SMS consent events. SMS remains log-only and no text message is sent.
 
 The later database layer should wire these screens to:
 
@@ -81,7 +82,7 @@ No real Telnyx request is made. No real text message is sent.
 
 After upload:
 
-1. Open `http://theboudincompany.com/test/rewards`.
+1. Open `https://theboudincompany.com/test/rewards`.
 2. Confirm the status page loads.
 3. Open `join.php` and submit a test signup preview.
 4. Open `wallet.php` and confirm mock coupon display.
