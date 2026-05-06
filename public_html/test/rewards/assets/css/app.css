@@ -380,6 +380,16 @@ input:not([type]) {
   color: #6a4b0f;
 }
 
+.pill.ready {
+  background: #e3f5eb;
+  color: #185533;
+}
+
+.pill.check {
+  background: #e8edf9;
+  color: #263b72;
+}
+
 .pill.blocked {
   background: #f9dddd;
   color: #772222;
@@ -390,6 +400,15 @@ input:not([type]) {
   border: 1px solid var(--warn-line);
   border-radius: 8px;
   padding: 14px;
+}
+
+.notice + .notice {
+  margin-top: 12px;
+}
+
+.notice.secondary {
+  background: #f6f8fb;
+  border-color: #d4dce8;
 }
 
 ol {
