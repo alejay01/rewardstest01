@@ -1,63 +1,69 @@
 <?php
 declare(strict_types=1);
-
-$appName = 'The Boudin Company Rewards';
-$appUrl = 'http://theboudincompany.com/test/rewards';
-$deployPath = 'public_html/test/rewards';
-$smsMode = 'log_only';
-$phpVersion = PHP_VERSION;
-$serverTime = (new DateTimeImmutable('now', new DateTimeZone('America/Chicago')))->format('Y-m-d H:i:s T');
+require __DIR__ . '/_includes/bootstrap.php';
 
 $checks = [
-    'Hosting target' => $deployPath,
-    'Public test URL' => $appUrl,
-    'SMS mode' => $smsMode,
-    'PHP version' => $phpVersion,
-    'Server time' => $serverTime,
+    'Hosting target' => $app['deploy_path'],
+    'Public test URL' => $app['base_url'],
+    'SMS mode' => $app['sms_mode'],
+    'PHP version' => PHP_VERSION,
+    'Server time' => (new DateTimeImmutable())->format('Y-m-d H:i:s T'),
 ];
+
+render_header('Status', 'Phase 1 scaffold');
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <title><?= htmlspecialchars($appName, ENT_QUOTES, 'UTF-8') ?></title>
-  <link rel="stylesheet" href="assets/css/app.css">
-</head>
-<body>
-  <main class="shell">
-    <section class="panel">
-      <div class="eyebrow">Test deployment</div>
-      <h1><?= htmlspecialchars($appName, ENT_QUOTES, 'UTF-8') ?></h1>
-      <p class="lead">
-        The rewards app scaffold is installed at the test hosting path. Live SMS is blocked while Telnyx and 10DLC setup are pending.
-      </p>
+<section class="hero-panel">
+  <div>
+    <h1><?= h($app['name']) ?></h1>
+    <p class="lead">
+      Phase 1 is a database-free app shell for signup, wallet, staff redemption, and admin preview. It is ready for test hosting upload.
+    </p>
+    <div class="actions">
+      <a class="button primary" href="join.php">Open Signup</a>
+      <a class="button" href="redeem.php">Staff Redeem</a>
+    </div>
+  </div>
+  <div class="hero-card" aria-label="Reward preview">
+    <img src="assets/img/boudin-rewards-mark.svg" alt="" width="80" height="80">
+    <strong>10 points</strong>
+    <span>per staff-confirmed visit</span>
+  </div>
+</section>
 
-      <dl class="status-grid">
-        <?php foreach ($checks as $label => $value): ?>
-          <div class="status-item">
-            <dt><?= htmlspecialchars($label, ENT_QUOTES, 'UTF-8') ?></dt>
-            <dd><?= htmlspecialchars($value, ENT_QUOTES, 'UTF-8') ?></dd>
-          </div>
-        <?php endforeach; ?>
-      </dl>
-
-      <div class="notice">
-        <strong>Safe mode:</strong> SMS should remain in log-only mode until legal pages, Telnyx credentials, sender registration, and internal test sends are complete.
+<section class="panel">
+  <h2>Environment Check</h2>
+  <dl class="status-grid">
+    <?php foreach ($checks as $label => $value): ?>
+      <div class="status-item">
+        <dt><?= h($label) ?></dt>
+        <dd><?= h($value) ?></dd>
       </div>
-    </section>
+    <?php endforeach; ?>
+  </dl>
+  <div class="notice">
+    <strong>Safe mode:</strong> SMS remains log-only until legal pages, Telnyx credentials, sender registration, and internal test sends are complete.
+  </div>
+</section>
 
-    <section class="tasks" aria-labelledby="next-steps">
-      <h2 id="next-steps">Next Setup Steps</h2>
-      <ol>
-        <li>Enable SSL and switch the app URL to HTTPS.</li>
-        <li>Create the MySQL database and user in cPanel.</li>
-        <li>Import the schema and Boudin Company seed data.</li>
-        <li>Create a non-public config file for database credentials.</li>
-        <li>Confirm <code>sms.mode</code> remains <code>log_only</code>.</li>
-      </ol>
-    </section>
-  </main>
-</body>
-</html>
+<section class="panel">
+  <h2>Phase 1 Routes</h2>
+  <div class="card-grid">
+    <a class="route-card" href="join.php">
+      <strong>Customer Signup</strong>
+      <span>QR/kiosk style opt-in form with consent preview.</span>
+    </a>
+    <a class="route-card" href="wallet.php">
+      <strong>Customer Wallet</strong>
+      <span>Mock points and coupon display for later database wiring.</span>
+    </a>
+    <a class="route-card" href="redeem.php">
+      <strong>Staff Redemption</strong>
+      <span>QR/manual short-code redemption preview.</span>
+    </a>
+    <a class="route-card" href="admin.php">
+      <strong>Admin Preview</strong>
+      <span>Launch gates, SMS mode, and next build tasks.</span>
+    </a>
+  </div>
+</section>
+<?php render_footer(); ?>
