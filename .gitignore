@@ -1,0 +1,4 @@
+public_html/test/rewards/_includes/config.local.php
+*.env
+*.log
+*.bak
