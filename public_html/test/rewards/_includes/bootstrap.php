@@ -4,6 +4,7 @@ declare(strict_types=1);
 date_default_timezone_set('America/Chicago');
 
 require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/rewards.php';
 
 function send_no_cache_headers(): void
 {
@@ -25,7 +26,7 @@ $app = [
     'location' => 'Rosenberg',
     'phone' => '713-561-5645',
     'address' => '28115 Southwest Freeway, Rosenberg, TX 77461',
-    'base_url' => 'http://theboudincompany.com/test/rewards',
+    'base_url' => 'https://theboudincompany.com/test/rewards',
     'deploy_path' => 'public_html/test/rewards',
     'sms_mode' => 'log_only',
     'policy_version' => 'boudin-rewards-2026-05-06-v1',
@@ -54,6 +55,7 @@ function nav_items(): array
         'join.php' => 'Join',
         'wallet.php' => 'Wallet',
         'redeem.php' => 'Redeem',
+        'qrcode.php' => 'QR',
         'admin.php' => 'Admin',
     ];
 }
