@@ -8,7 +8,8 @@ const APP_SHELL = [
   './admin.php',
   './assets/css/app.css',
   './assets/js/app.js',
-  './assets/img/boudin-rewards-mark.svg'
+  './assets/img/boudin-logo-icon.svg',
+  './assets/img/boudin-logo-wordmark.svg'
 ];
 
 self.addEventListener('install', (event) => {
