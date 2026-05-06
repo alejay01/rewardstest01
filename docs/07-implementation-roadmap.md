@@ -9,7 +9,7 @@ Duration: 1-3 days
 Deliverables:
 
 - Confirm restaurant name, locations, timezone, and domain. Restaurant and location are confirmed for The Boudin Company in Rosenberg, Texas; domain still needs confirmation.
-- Choose SMS provider. Telnyx is selected; account access, API key, Messaging Profile, sender number, and 10DLC setup still need confirmation.
+- Choose SMS provider. Telnyx is selected, but account access, API key, Messaging Profile, sender number, and 10DLC setup are deferred launch gates. Development proceeds in `log_only` SMS mode.
 - Confirm reward earning basis. Visit-based earning is selected for version 1.
 - Draft privacy policy, terms, SMS opt-in language, and sample messages. Drafts are prepared in `docs/legal`; they still need owner/legal review and public URLs.
 - Decide first reward rule and welcome coupon.
@@ -38,6 +38,7 @@ Duration: 1 week
 Deliverables:
 
 - SMS provider adapter.
+- Log-only SMS provider for development.
 - SMS confirmation messages.
 - STOP/HELP inbound handling.
 - Delivery receipt handling.
@@ -122,4 +123,18 @@ Pilot with:
 - Opt-out prevents future SMS campaigns.
 - Admin can create a campaign and preview estimated recipients.
 - Cron can send queued messages in batches.
+- In `log_only` mode, cron records SMS delivery attempts without external sends.
 - Database backup process is documented.
+
+## Deferred Launch Gates
+
+These items do not block core development, but they do block live SMS launch:
+
+- Telnyx account access.
+- Telnyx API key.
+- Messaging Profile ID.
+- Sender number.
+- Webhook signature verification setup.
+- 10DLC/business texting registration.
+- Published privacy policy and rewards terms URLs.
+- Owner/legal approval of SMS opt-in language.
