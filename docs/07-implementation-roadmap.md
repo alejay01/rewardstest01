@@ -13,7 +13,11 @@ Deliverables:
 - Confirm reward earning basis. Visit-based earning is selected for version 1.
 - Draft privacy policy, terms, SMS opt-in language, and sample messages. Drafts are prepared in `docs/legal`; they still need owner/legal review and public URLs.
 - Decide first reward rule and welcome coupon.
-- Create repository, hosting account, and database.
+- Create repository, hosting account, and database. Repository and hosting are ready; database creation is next.
+
+## Hosting Status
+
+Hosting is ready as of 2026-05-06. Use [Hosting Ready Handoff](11-hosting-ready-handoff.md) to collect the remaining non-secret setup values and move into app scaffolding.
 
 ## Phase 1: Core MVP
 
@@ -22,6 +26,7 @@ Duration: 1-2 weeks
 Deliverables:
 
 - MySQL schema.
+- cPanel deployment structure and non-public config file.
 - Admin login and roles.
 - Customer signup page.
 - QR code signup links by location.
