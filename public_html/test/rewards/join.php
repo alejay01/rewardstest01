@@ -9,6 +9,18 @@ $email = trim((string)($_POST['email'] ?? ''));
 $source = trim((string)($_GET['source'] ?? $_POST['source'] ?? 'boudin-rosenberg-qr-counter'));
 $smsConsent = isset($_POST['sms_consent']);
 $mockCode = $submitted ? mock_coupon_code($phone . $email . $source) : 'BC100PT';
+$saveResult = null;
+
+if ($submitted) {
+    $saveResult = rewards_create_customer([
+        'first_name' => $firstName,
+        'phone' => $phone,
+        'email' => $email,
+        'source' => $source,
+        'source_type' => 'qr',
+        'sms_consent' => $smsConsent,
+    ]);
+}
 
 render_header('Join Rewards', 'Customer signup');
 ?>
@@ -41,7 +53,7 @@ render_header('Join Rewards', 'Customer signup');
       </label>
 
       <div class="form-actions">
-        <button class="button primary" type="submit">Preview Signup</button>
+        <button class="button primary" type="submit">Join Rewards</button>
         <a class="button" href="wallet.php">View Wallet Mock</a>
       </div>
     </form>
@@ -59,13 +71,15 @@ render_header('Join Rewards', 'Customer signup');
 
 <?php if ($submitted): ?>
   <section class="panel result-panel" tabindex="-1">
-    <h2>Signup Preview</h2>
-    <p>No database record was created yet. This is the handoff shape for the later PHP database code.</p>
+    <h2>Signup Result</h2>
+    <div class="notice <?= $saveResult !== null && $saveResult['ok'] ? 'success' : '' ?>">
+      <?= h((string)($saveResult['message'] ?? 'Signup was submitted.')) ?>
+    </div>
     <dl class="status-grid">
       <div class="status-item"><dt>Name</dt><dd><?= h($firstName ?: 'Not provided') ?></dd></div>
-      <div class="status-item"><dt>Phone</dt><dd><?= h($phone) ?></dd></div>
+      <div class="status-item"><dt>Phone</dt><dd><?= h((string)($saveResult['phone'] ?? $phone)) ?></dd></div>
       <div class="status-item"><dt>Email</dt><dd><?= h($email ?: 'Not provided') ?></dd></div>
-      <div class="status-item"><dt>SMS consent</dt><dd><?= $smsConsent ? 'Opted in for later log-only confirmation' : 'Not opted in' ?></dd></div>
+      <div class="status-item"><dt>SMS consent</dt><dd><?= $smsConsent ? 'Recorded for later log-only confirmation' : 'Not opted in' ?></dd></div>
       <div class="status-item"><dt>Mock coupon</dt><dd><?= h($mockCode) ?></dd></div>
       <div class="status-item"><dt>Policy version</dt><dd><?= h($app['policy_version']) ?></dd></div>
     </dl>
