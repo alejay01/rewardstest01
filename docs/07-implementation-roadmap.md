@@ -27,7 +27,7 @@ Deliverables:
 - QR code signup links by location.
 - Customer records and consent records.
 - Coupon generation.
-- Staff redemption screen.
+- Staff redemption screen with QR scanning and manual short-code entry.
 - Basic points ledger.
 - Audit logs.
 
@@ -95,7 +95,7 @@ Pilot with:
 - One welcome coupon.
 - One visit-based points rule.
 - SMS opt-in.
-- Manual staff redemption.
+- Staff redemption by QR scan and manual short-code entry.
 - No POS integration.
 - Weekly campaign sending only after consent checks are tested.
 
@@ -116,7 +116,8 @@ Pilot with:
 - Customer can sign up from QR code.
 - Consent event is stored with exact disclosure text.
 - Welcome coupon is created.
-- Staff can redeem coupon once.
+- Staff can redeem coupon once by QR scan.
+- Staff can redeem coupon once by manual short-code entry.
 - Second redemption attempt is rejected.
 - Opt-out prevents future SMS campaigns.
 - Admin can create a campaign and preview estimated recipients.

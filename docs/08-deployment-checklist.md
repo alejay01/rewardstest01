@@ -77,7 +77,8 @@ Last reviewed: 2026-05-06
 - Manager knows how to void/redeem coupons.
 - First campaign limited to test audience.
 - Opt-out tested.
-- Redemption scanner/manual code tested.
+- QR redemption scanner tested.
+- Manual short-code redemption tested.
 - Printed signs match signup URL.
 - Privacy/terms pages live.
 - Backup confirmed.

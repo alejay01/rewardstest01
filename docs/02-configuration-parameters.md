@@ -53,6 +53,7 @@ These are the parameters the system should support before development starts. Th
 | Discount value | 10 percent | Avoid free-form math. |
 | Code format | 8 character code | Short enough for manual entry. |
 | QR enabled | Yes | QR contains redemption token or URL. |
+| Redemption methods | QR scan and short-code entry | Confirmed for version 1. |
 | Single use | Yes | Default for rewards. |
 | Campaign limit | 500 uses | Useful for public offers. |
 | Per-customer limit | 1 | Prevent repeated use. |

@@ -48,6 +48,8 @@ Use both:
 - Human-readable short code for manual entry.
 - Secure redemption token for QR scanning.
 
+Both redemption methods are confirmed for version 1. The staff screen should accept QR scans first for speed and also provide a manual short-code field when the camera/scanner is unavailable.
+
 The short code can be visible, but the QR token should be harder to guess. If possible, redemption should happen through a server-side lookup, not by trusting the QR payload.
 
 ## Fraud Controls

@@ -18,6 +18,7 @@ Last reviewed: 2026-05-06
 | SMS provider | Telelinux |
 | Points earning basis | Visit |
 | Draft points value | 10 points per staff-confirmed visit |
+| Redemption methods | QR scan and manual short-code entry |
 
 ## Pilot Assumptions
 
@@ -26,6 +27,7 @@ Last reviewed: 2026-05-06
 - Marketing SMS still needs clear opt-in language, opt-out handling, HELP handling, and business texting registration/compliance review.
 - QR signup should default to this location unless another location is added.
 - Version 1 rewards should use staff-confirmed visits. Spend-based points can be considered later if POS integration is added.
+- Staff redemption should support both QR scanning and manual short-code entry.
 
 ## Telelinux Information Needed Before Build
 

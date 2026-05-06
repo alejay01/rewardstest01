@@ -224,6 +224,7 @@ CREATE TABLE coupon_redemptions (
   location_id BIGINT UNSIGNED NULL,
   admin_user_id BIGINT UNSIGNED NULL,
   redemption_code VARCHAR(40) NULL,
+  redemption_method ENUM('qr','short_code','manual_override') NOT NULL DEFAULT 'short_code',
   status ENUM('approved','rejected','voided') NOT NULL,
   rejection_reason VARCHAR(160) NULL,
   purchase_amount DECIMAL(10,2) NULL,
