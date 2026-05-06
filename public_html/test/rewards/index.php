@@ -2,10 +2,14 @@
 declare(strict_types=1);
 require __DIR__ . '/_includes/bootstrap.php';
 
+$dbStatus = db_status();
 $checks = [
     'Hosting target' => $app['deploy_path'],
     'Public test URL' => $app['base_url'],
     'SMS mode' => $app['sms_mode'],
+    'Database config' => $dbStatus['configured'] ? 'Found' : 'Not created yet',
+    'Database connection' => $dbStatus['connected'] ? 'Connected' : 'Not connected',
+    'Database name' => $dbStatus['database'],
     'PHP version' => PHP_VERSION,
     'Server time' => (new DateTimeImmutable())->format('Y-m-d H:i:s T'),
 ];
@@ -16,7 +20,7 @@ render_header('Status', 'Phase 1 scaffold');
   <div>
     <h1><?= h($app['name']) ?></h1>
     <p class="lead">
-      Phase 1 is a database-free app shell for signup, wallet, staff redemption, and admin preview. It is ready for test hosting upload.
+      Phase 1 is an app shell for signup, wallet, staff redemption, admin preview, and safe MySQL connection checks. It is ready for test hosting upload.
     </p>
     <div class="actions">
       <a class="button primary" href="join.php">Open Signup</a>
@@ -42,6 +46,9 @@ render_header('Status', 'Phase 1 scaffold');
   </dl>
   <div class="notice">
     <strong>Safe mode:</strong> SMS remains log-only until legal pages, Telnyx credentials, sender registration, and internal test sends are complete.
+  </div>
+  <div class="notice secondary">
+    <strong>Database:</strong> <?= h($dbStatus['message']) ?>
   </div>
 </section>
 
