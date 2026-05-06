@@ -9,3 +9,7 @@ Options -Indexes
 <FilesMatch "\.(env|ini|log|sql|bak)$">
   Require all denied
 </FilesMatch>
+
+<FilesMatch "^(bootstrap|database|config\.example|config\.local)\.php$">
+  Require all denied
+</FilesMatch>
