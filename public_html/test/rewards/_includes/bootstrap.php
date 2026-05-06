@@ -76,6 +76,7 @@ function render_header(string $title, string $section = ''): void
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="assets/img/boudin-logo-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="assets/css/phase2.css">
   <script src="assets/js/app.js" defer></script>
 </head>
 <body>
