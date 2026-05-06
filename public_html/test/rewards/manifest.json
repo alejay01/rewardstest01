@@ -1,0 +1,17 @@
+{
+  "name": "The Boudin Company Rewards",
+  "short_name": "Boudin Rewards",
+  "start_url": "./index.php",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbfaf7",
+  "theme_color": "#1d6b63",
+  "icons": [
+    {
+      "src": "assets/img/boudin-rewards-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
