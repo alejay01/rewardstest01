@@ -21,6 +21,21 @@ INSERT INTO businesses (
 
 SET @business_id = LAST_INSERT_ID();
 
+INSERT INTO business_settings (
+  business_id,
+  setting_key,
+  setting_value,
+  is_secret
+) VALUES
+  (@business_id, 'sms.provider', 'telnyx', 0),
+  (@business_id, 'sms.mode', 'log_only', 0),
+  (@business_id, 'sms.live_send_enabled', '0', 0),
+  (@business_id, 'sms.max_marketing_per_month', '4', 0),
+  (@business_id, 'sms.telnyx.api_key', NULL, 1),
+  (@business_id, 'sms.telnyx.messaging_profile_id', NULL, 0),
+  (@business_id, 'sms.telnyx.sender_number', NULL, 0),
+  (@business_id, 'sms.telnyx.10dlc_status', 'pending', 0);
+
 INSERT INTO locations (
   business_id,
   name,
