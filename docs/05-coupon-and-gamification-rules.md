@@ -113,7 +113,7 @@ The current balance is calculated from ledger entries or cached after each ledge
 ## Suggested Version 1 Reward Setup
 
 - Signup reward: one single-use coupon.
-- Visit earn: 10 points per staff-confirmed visit.
+- Visit earn: 10 points per staff-confirmed visit. Visit-based earning is confirmed for version 1.
 - Points reward: 100 points = $5 off.
 - Birthday reward: free dessert, valid for 30 days.
 - Win-back: $5 off after 45 days without activity.

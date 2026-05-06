@@ -36,9 +36,9 @@ These are the parameters the system should support before development starts. Th
 
 | Parameter | Example | Notes |
 | --- | --- | --- |
-| Earn basis | Visit | Visit is easiest before POS integration. |
-| Points per visit | 10 | Can be configured by location or day. |
-| Points per dollar | 1 per $1 | Requires order total from POS or staff input. |
+| Earn basis | Visit | Confirmed for version 1. |
+| Points per visit | 10 | Draft default; staff-confirmed visits earn points. |
+| Points per dollar | Not active in V1 | Future option if POS integration is added. |
 | Welcome bonus | 25 points | Optional. |
 | Referral bonus | 50 points | Award after referred customer completes first purchase. |
 | Birthday reward | Free dessert | Trigger by birthday month/day. |

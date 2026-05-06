@@ -13,6 +13,7 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 - Backend: PHP 8.x and MySQL/MariaDB on cPanel.
 - Customer app: installable PWA that works in browser, Android, iPhone, Windows, and desktop.
 - Messaging: Telelinux is the selected SMS provider for the pilot. Telnyx and Twilio remain documented as backup options.
+- Rewards: points are earned by visit for version 1, using staff-confirmed visits.
 - Push notifications: OneSignal for web push and later mobile-style messaging flows.
 - Email: Brevo or a transactional email provider, depending on whether marketing automation is needed immediately.
 - Coupon engine: internal coupon codes and QR redemption so the restaurant owns the reward rules.
@@ -36,9 +37,8 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 ## Immediate Decisions Needed
 
 1. Confirm Telelinux API credentials, endpoint documentation, webhook support, sender number, and 10DLC/business texting process.
-2. Decide whether points are earned by visit, dollars spent, item/category, or manual staff action for version 1.
-3. Decide whether redemption happens by staff scanning a QR code or manually entering a short code.
-4. Prepare SMS opt-in language, privacy policy, and terms page before sending marketing texts.
+2. Decide whether redemption happens by staff scanning a QR code or manually entering a short code.
+3. Prepare SMS opt-in language, privacy policy, and terms page before sending marketing texts.
 
 ## Build Philosophy
 

@@ -10,6 +10,7 @@ Deliverables:
 
 - Confirm restaurant name, locations, timezone, and domain. Restaurant and location are confirmed for The Boudin Company in Rosenberg, Texas; domain still needs confirmation.
 - Choose SMS provider. Telelinux is selected; API credentials/docs still need confirmation.
+- Confirm reward earning basis. Visit-based earning is selected for version 1.
 - Draft privacy policy, terms, SMS opt-in language, and sample messages.
 - Decide first reward rule and welcome coupon.
 - Create repository, hosting account, and database.
@@ -92,7 +93,7 @@ Pilot with:
 
 - One location.
 - One welcome coupon.
-- One points rule.
+- One visit-based points rule.
 - SMS opt-in.
 - Manual staff redemption.
 - No POS integration.
