@@ -14,6 +14,7 @@ These sources were checked while preparing the planning package. Pricing and pro
 ## SMS
 
 - Telelinux is selected for the pilot, but public API/provider documentation was not confirmed during the initial planning pass. Add the official Telelinux API documentation here once received from the provider.
+- Twilio A2P 10DLC campaign approval requirements: https://help.twilio.com/hc/en-us/articles/11847054539547-A2P-10DLC-Campaign-Approval-Requirements
 - Telnyx messaging pricing: https://telnyx.com/pricing/messaging/
 - Telnyx 10DLC FAQ: https://support.telnyx.com/en/articles/3679260-frequently-asked-questions-about-10dlc
 - Telnyx 10DLC developer docs: https://developers.telnyx.com/docs/messaging/10dlc
@@ -46,5 +47,6 @@ These sources were checked while preparing the planning package. Pricing and pro
 
 ## Compliance
 
+- FTC CAN-SPAM compliance guide: https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business
 - FCC TCPA consent discussion: https://docs.fcc.gov/public/attachments/DOC-408396A1.pdf
 - CTIA messaging principles and best practices: https://api.ctia.org/docs/default-source/default-document-library/170119-ctia-messaging-principles-and-best-practices.pdf

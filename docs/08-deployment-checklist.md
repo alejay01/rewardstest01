@@ -23,6 +23,16 @@ Last reviewed: 2026-05-06
 - Create default coupon templates.
 - Create consent policy version.
 
+## Legal Page Setup
+
+- Review and approve `docs/legal/sms-opt-in-language.md`.
+- Review and approve `docs/legal/privacy-policy-template.md`.
+- Review and approve `docs/legal/rewards-terms-template.md`.
+- Publish privacy policy and rewards terms at public URLs.
+- Add privacy policy and terms links beside the SMS opt-in checkbox.
+- Save screenshots of the signup page, QR flow, and kiosk flow for Telelinux/business texting registration.
+- Store policy and terms version as `boudin-rewards-2026-05-06-v1` unless the published copy changes.
+
 ## Provider Setup
 
 ### SMS
@@ -76,6 +86,8 @@ Last reviewed: 2026-05-06
 - Staff trained.
 - Manager knows how to void/redeem coupons.
 - First campaign limited to test audience.
+- Privacy policy and rewards terms published.
+- SMS opt-in checkbox uses approved copy and is unchecked by default.
 - Opt-out tested.
 - QR redemption scanner tested.
 - Manual short-code redemption tested.

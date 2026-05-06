@@ -29,6 +29,7 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 - [Integration Options](docs/04-integration-options.md)
 - [Coupon And Gamification Rules](docs/05-coupon-and-gamification-rules.md)
 - [Compliance Checklist](docs/06-compliance-checklist.md)
+- [Legal Draft Package](docs/legal/README.md)
 - [Implementation Roadmap](docs/07-implementation-roadmap.md)
 - [Deployment Checklist](docs/08-deployment-checklist.md)
 - [Source Notes](docs/09-source-notes.md)
@@ -38,7 +39,7 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 ## Immediate Decisions Needed
 
 1. Confirm Telelinux API credentials, endpoint documentation, webhook support, sender number, and 10DLC/business texting process.
-2. Prepare SMS opt-in language, privacy policy, and terms page before sending marketing texts.
+2. Owner/legal review and publish the prepared SMS opt-in language, privacy policy, and rewards terms before sending marketing texts.
 
 ## Build Philosophy
 

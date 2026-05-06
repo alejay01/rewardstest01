@@ -4,6 +4,8 @@ Last reviewed: 2026-05-06
 
 This is an implementation checklist, not legal advice. A restaurant should have counsel review marketing language, privacy policy, and terms before sending automated marketing texts or emails.
 
+Draft legal copy has been prepared in [Legal Draft Package](legal/README.md). Treat those files as the source drafts for the SMS opt-in flow, privacy policy page, and rewards terms page.
+
 ## SMS Consent
 
 For U.S. marketing SMS, the system should require clear consent before sending promotional texts.
@@ -40,10 +42,10 @@ Telnyx and Twilio both document 10DLC registration. Telnyx notes that unregister
 
 ## Opt-In Language Template
 
-Example signup language:
+Use the approved language from [SMS Opt-In Language](legal/sms-opt-in-language.md). Current draft signup language:
 
 ```text
-By checking this box, I agree to receive recurring automated marketing text messages from [Restaurant Name] at the phone number provided. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out and HELP for help. See Terms and Privacy Policy.
+Yes, I agree to receive recurring automated marketing text messages from The Boudin Company Rewards at the mobile number I provide. Message frequency varies, up to 4 messages per month. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out and HELP for help. I agree to the Rewards Terms and Privacy Policy.
 ```
 
 Use an unchecked checkbox. Do not pre-check marketing consent.
@@ -53,7 +55,7 @@ Use an unchecked checkbox. Do not pre-check marketing consent.
 Example:
 
 ```text
-[Restaurant Name]: Your reward is ready: [Offer]. Show code [Code] by [Date]. Reply STOP to opt out.
+The Boudin Company: Your reward is ready: [Offer]. Show code [Code] by [Date]. Reply STOP to opt out.
 ```
 
 For transactional messages, avoid promotional copy unless the customer gave marketing consent.
@@ -74,7 +76,7 @@ The system should:
 Inbound HELP should return:
 
 ```text
-[Restaurant Name] rewards help: visit [support URL] or call [phone]. Reply STOP to opt out. Msg/data rates may apply.
+The Boudin Company Rewards help: call 713-561-5645 or visit [SupportUrl]. Msg&data rates may apply. Msg freq varies. Reply STOP to cancel.
 ```
 
 ## Email Compliance
@@ -112,6 +114,7 @@ The privacy policy should disclose:
 - Data retention practices.
 - Coupon/reward tracking.
 - Analytics/cookies if used.
+- A statement that SMS opt-in data and mobile phone numbers are not sold or shared with third parties for their own marketing or promotional purposes.
 
 ## Data Retention
 

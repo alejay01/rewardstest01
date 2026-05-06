@@ -132,7 +132,25 @@ INSERT INTO message_templates (
     'SMS help',
     'sms',
     NULL,
-    'The Boudin Company rewards help: call 713-561-5645 or visit [SupportUrl]. Reply STOP to opt out. Msg/data rates may apply.',
+    'The Boudin Company Rewards help: call 713-561-5645 or visit [SupportUrl]. Msg&data rates may apply. Msg freq varies. Reply STOP to cancel.',
+    NULL,
+    1
+  ),
+  (
+    @business_id,
+    'SMS opt-out confirmation',
+    'sms',
+    NULL,
+    'The Boudin Company Rewards: You are unsubscribed and will receive no more marketing texts. Reply HELP for help.',
+    NULL,
+    1
+  ),
+  (
+    @business_id,
+    'SMS opt-in confirmation',
+    'sms',
+    NULL,
+    'The Boudin Company Rewards: You are subscribed. Msg freq varies, up to 4/mo. Msg&data rates may apply. Reply HELP for help or STOP to cancel.',
     NULL,
     1
   );
