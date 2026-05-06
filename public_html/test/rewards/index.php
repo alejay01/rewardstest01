@@ -28,7 +28,7 @@ render_header('Status', 'Phase 1 scaffold');
     </div>
   </div>
   <div class="hero-card" aria-label="Reward preview">
-    <img src="assets/img/boudin-rewards-mark.svg" alt="" width="80" height="80">
+    <img src="assets/img/boudin-logo-icon.svg" alt="" width="80" height="80">
     <strong>10 points</strong>
     <span>per staff-confirmed visit</span>
   </div>
