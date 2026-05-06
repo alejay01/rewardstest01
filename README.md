@@ -33,13 +33,14 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 - [Implementation Roadmap](docs/07-implementation-roadmap.md)
 - [Deployment Checklist](docs/08-deployment-checklist.md)
 - [Source Notes](docs/09-source-notes.md)
+- [SMS Development Workaround](docs/10-sms-development-workaround.md)
 - [Draft MySQL Schema](database/schema-draft.sql)
 - [Pilot Seed Data](database/seed-boudin-company.sql)
 
 ## Immediate Decisions Needed
 
-1. Confirm Telnyx account access, API key, Messaging Profile, sender number, webhook URLs, and 10DLC/business texting process.
-2. Owner/legal review and publish the prepared SMS opt-in language, privacy policy, and rewards terms before sending marketing texts.
+1. Build can proceed in `log_only` SMS mode while Telnyx account access, API key, Messaging Profile, sender number, webhook URLs, and 10DLC/business texting process are pending.
+2. Before live marketing SMS, confirm Telnyx setup, owner/legal approval, and published SMS opt-in, privacy policy, and rewards terms.
 
 ## Build Philosophy
 
@@ -47,6 +48,7 @@ Keep the first version small and reliable:
 
 - Customers sign up with phone number and optional email.
 - The system tracks consent, rewards, coupons, and redemptions.
+- SMS starts in no-send/log-only mode until Telnyx and 10DLC are ready.
 - Staff can redeem rewards quickly at the counter.
 - Admins can create specials and send compliant notifications.
 - Everything is designed to be duplicated for additional restaurant locations.
