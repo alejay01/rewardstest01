@@ -5,8 +5,8 @@ Last reviewed: 2026-05-06
 ## cPanel Setup
 
 - Hosting account ready.
-- Confirm public domain/subdomain or path, for example `rewards.example.com`.
-- Confirm document root path.
+- Public test URL confirmed: `http://theboudincompany.com/test/rewards`.
+- Document root confirmed: `public_html/test/rewards`.
 - Enable SSL.
 - Select PHP 8.1+ where available.
 - Create MySQL database.
@@ -15,6 +15,7 @@ Last reviewed: 2026-05-06
 - Set file permissions conservatively.
 - Configure cron jobs for queued sends and automation.
 - Confirm whether Git deployment, FTP/SFTP upload, or cPanel File Manager upload will be used.
+- Upload the initial scaffold from `public_html/test/rewards/`.
 
 ## Database Setup
 
