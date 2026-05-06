@@ -67,6 +67,8 @@ These are the parameters the system should support before development starts. Th
 | Parameter | Example | Notes |
 | --- | --- | --- |
 | SMS provider | Telnyx | Selected for the pilot; adapter should use the Telnyx Messaging API. |
+| SMS mode | log_only | Development default. Allowed values should include disabled, log_only, test, and live. |
+| SMS live send enabled | No | Must stay off until Telnyx credentials, sender registration, and legal URLs are ready. |
 | Email provider | Brevo | Provider should be swappable. |
 | Push provider | OneSignal | Good for PWA/web push. |
 | Quiet hours | 9 PM to 9 AM | Avoid late marketing. |
@@ -105,5 +107,6 @@ These are the parameters the system should support before development starts. Th
 | Password storage | PHP password_hash using bcrypt or Argon2 if available. |
 | Sessions | Secure cookies, HTTPS only, idle timeout. |
 | API keys | Store outside public web root when possible. |
+| No-send mode | Keep SMS in `log_only` mode until launch approval. |
 | Audit logs | Record admin, action, object, timestamp, IP. |
 | Backups | Daily database backup and weekly off-server copy. |
