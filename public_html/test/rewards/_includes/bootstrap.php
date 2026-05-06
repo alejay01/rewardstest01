@@ -58,14 +58,14 @@ function render_header(string $title, string $section = ''): void
   <meta name="theme-color" content="#1d6b63">
   <title><?= h($title . ' | ' . $app['name']) ?></title>
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="assets/img/boudin-rewards-mark.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/boudin-logo-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/app.css">
   <script src="assets/js/app.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="index.php" aria-label="<?= h($app['name']) ?>">
-      <img src="assets/img/boudin-rewards-mark.svg" alt="" width="40" height="40">
+      <img src="assets/img/boudin-logo-icon.svg" alt="" width="40" height="40">
       <span>
         <strong><?= h($app['restaurant']) ?></strong>
         <small>Rewards test app</small>
