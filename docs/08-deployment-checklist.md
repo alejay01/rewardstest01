@@ -27,7 +27,7 @@ Last reviewed: 2026-05-06
 
 ### SMS
 
-- Register provider account.
+- Register or confirm Telelinux provider account.
 - Complete Brand and Campaign/10DLC registration.
 - Purchase or assign sending number.
 - Configure inbound webhook URL.

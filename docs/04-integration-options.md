@@ -6,7 +6,7 @@ Last reviewed: 2026-05-06
 
 | Need | First Choice | Backup Choice | Reason |
 | --- | --- | --- | --- |
-| SMS API | Telnyx | Twilio | Telnyx is usually cheaper; Twilio is easier and better documented. |
+| SMS API | Telelinux | Telnyx or Twilio | Telelinux is selected for the pilot; Telnyx/Twilio remain backup API paths. |
 | Web/app push | OneSignal | Firebase Cloud Messaging | OneSignal is faster to launch; FCM is no-cost but more engineering. |
 | Email marketing | Brevo | OneSignal Email or custom SMTP | Brevo is affordable and has automation. |
 | Customer app | PWA | Native app later | PWA is cheapest and easiest to replicate. |
@@ -15,9 +15,34 @@ Last reviewed: 2026-05-06
 
 ## SMS Options
 
+### Telelinux
+
+Selected SMS provider for The Boudin Company pilot.
+
+Use Telelinux for:
+
+- Customer signup confirmation texts.
+- Reward and coupon notifications.
+- Marketing SMS after opt-in.
+- STOP/HELP handling if supported through inbound SMS webhooks.
+- Delivery status updates if supported.
+
+Before development, confirm:
+
+- API endpoint and authentication method.
+- Outbound SMS request/response format.
+- Inbound message webhook format.
+- Delivery receipt webhook format.
+- Sender number or sender ID setup.
+- U.S. business texting registration requirements.
+- Price per message segment and carrier fees.
+- Rate limits and daily/monthly sending limits.
+
+If Telelinux does not provide reliable API/webhook support, use the same internal `SmsProvider` interface with Telnyx or Twilio as a fallback.
+
 ### Telnyx
 
-Best for cost-sensitive API-based SMS.
+Backup option for cost-sensitive API-based SMS.
 
 Current public pricing page lists local/10DLC SMS at $0.004 per message part plus carrier fees. Pricing varies by sender type, carrier, destination, and volume.
 
@@ -29,7 +54,7 @@ Use Telnyx if:
 
 ### Twilio
 
-Best for ease, documentation, and developer familiarity.
+Backup option for ease, documentation, and developer familiarity.
 
 Current U.S. SMS pricing page lists SMS starting at $0.0083 per outbound message to U.S. long codes, plus carrier fees and other possible fees. U.S. A2P 10DLC registration is required for long-code business texting.
 

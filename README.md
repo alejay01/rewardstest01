@@ -4,13 +4,15 @@ Last reviewed: 2026-05-06
 
 This repository contains the planning package for a simple, budget-friendly restaurant reward and gamification system designed for cPanel hosting on HostGator, PHP, and MySQL.
 
+The first pilot location is The Boudin Company in Rosenberg, Texas.
+
 The recommended approach is a custom PHP/MySQL backend with a Progressive Web App (PWA) customer experience, QR-code signup, coupon generation, SMS/email/web-push notifications, and room for future live game features such as a buzzer system.
 
 ## Recommended Version 1 Direction
 
 - Backend: PHP 8.x and MySQL/MariaDB on cPanel.
 - Customer app: installable PWA that works in browser, Android, iPhone, Windows, and desktop.
-- Messaging: Telnyx for lowest SMS cost, or Twilio for easier setup and documentation.
+- Messaging: Telelinux is the selected SMS provider for the pilot. Telnyx and Twilio remain documented as backup options.
 - Push notifications: OneSignal for web push and later mobile-style messaging flows.
 - Email: Brevo or a transactional email provider, depending on whether marketing automation is needed immediately.
 - Coupon engine: internal coupon codes and QR redemption so the restaurant owns the reward rules.
@@ -18,6 +20,7 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 
 ## Document Index
 
+- [Pilot Profile](docs/00-pilot-profile.md)
 - [Product Blueprint](docs/01-product-blueprint.md)
 - [Configuration Parameters](docs/02-configuration-parameters.md)
 - [Technical Architecture](docs/03-technical-architecture.md)
@@ -28,14 +31,14 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 - [Deployment Checklist](docs/08-deployment-checklist.md)
 - [Source Notes](docs/09-source-notes.md)
 - [Draft MySQL Schema](database/schema-draft.sql)
+- [Pilot Seed Data](database/seed-boudin-company.sql)
 
 ## Immediate Decisions Needed
 
-1. Pick the first restaurant/location for the pilot.
-2. Pick the SMS provider: Telnyx for cost, Twilio for ease.
-3. Decide whether points are earned by visit, dollars spent, item/category, or manual staff action for version 1.
-4. Decide whether redemption happens by staff scanning a QR code or manually entering a short code.
-5. Prepare SMS opt-in language, privacy policy, and terms page before sending marketing texts.
+1. Confirm Telelinux API credentials, endpoint documentation, webhook support, sender number, and 10DLC/business texting process.
+2. Decide whether points are earned by visit, dollars spent, item/category, or manual staff action for version 1.
+3. Decide whether redemption happens by staff scanning a QR code or manually entering a short code.
+4. Prepare SMS opt-in language, privacy policy, and terms page before sending marketing texts.
 
 ## Build Philosophy
 

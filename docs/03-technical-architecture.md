@@ -80,12 +80,15 @@ PushProvider
 
 Then add providers:
 
+- TelelinuxSmsProvider
 - TelnyxSmsProvider
 - TwilioSmsProvider
 - BrevoEmailProvider
 - OneSignalPushProvider
 
 This makes it possible to start with one provider and switch later without rewriting the reward system.
+
+Telelinux is selected for the first pilot. The adapter should not be hard-coded into reward logic; it should live behind the same `SmsProvider` interface so another provider can be used later if pricing, compliance, or API support changes.
 
 ## Data Flow
 

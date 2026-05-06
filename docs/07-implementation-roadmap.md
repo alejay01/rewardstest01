@@ -8,8 +8,8 @@ Duration: 1-3 days
 
 Deliverables:
 
-- Confirm restaurant name, locations, timezone, and domain.
-- Choose SMS provider.
+- Confirm restaurant name, locations, timezone, and domain. Restaurant and location are confirmed for The Boudin Company in Rosenberg, Texas; domain still needs confirmation.
+- Choose SMS provider. Telelinux is selected; API credentials/docs still need confirmation.
 - Draft privacy policy, terms, SMS opt-in language, and sample messages.
 - Decide first reward rule and welcome coupon.
 - Create repository, hosting account, and database.
@@ -104,7 +104,7 @@ Pilot with:
 | --- | --- |
 | Hosting | Existing HostGator/cPanel plan. |
 | Domain/SSL | Existing website domain and cPanel SSL. |
-| SMS | Telnyx or Twilio pay-as-you-go plus 10DLC fees. |
+| SMS | Telelinux provider fees plus any required U.S. business texting registration/carrier fees. |
 | Email | Brevo free or Starter/Standard depending on volume. |
 | Push | OneSignal free/Growth or Firebase no-cost. |
 | QR codes | Generated internally. |

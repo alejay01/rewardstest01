@@ -8,15 +8,16 @@ These are the parameters the system should support before development starts. Th
 
 | Parameter | Example | Notes |
 | --- | --- | --- |
-| Business name | Redline Rewards | Used in SMS/email/push templates. |
-| Legal business name | Restaurant LLC | Needed for SMS 10DLC registration. |
+| Business name | The Boudin Company | Used in SMS/email/push templates. |
+| Legal business name | To be confirmed | Needed for SMS business texting registration. |
 | EIN / tax ID | On file | Do not store casually unless required. Keep secure. |
-| Location name | Downtown | Multi-location support should be built in from the start. |
-| Address | 123 Main St | Used for campaigns and legal pages. |
+| Location name | Rosenberg | Multi-location support should be built in from the start. |
+| Address | 28115 Southwest Freeway, Rosenberg, TX 77461 | Used for campaigns and legal pages. |
+| Phone | 713-561-5645 | Store normalized phone as +17135615645. |
 | Time zone | America/Chicago | Needed for expiration and campaign scheduling. |
-| Public website | https://example.com | Needed for SMS campaign review. |
-| Privacy policy URL | https://example.com/privacy | Needed before marketing messages. |
-| Terms URL | https://example.com/rewards-terms | Needed for program rules. |
+| Public website | To be confirmed | Needed for SMS campaign review. |
+| Privacy policy URL | To be created/confirmed | Needed before marketing messages. |
+| Terms URL | To be created/confirmed | Needed for program rules. |
 
 ## Customer Profile
 
@@ -64,7 +65,7 @@ These are the parameters the system should support before development starts. Th
 
 | Parameter | Example | Notes |
 | --- | --- | --- |
-| SMS provider | Telnyx | Provider should be swappable. |
+| SMS provider | Telelinux | Selected for the pilot; adapter details depend on Telelinux API docs. |
 | Email provider | Brevo | Provider should be swappable. |
 | Push provider | OneSignal | Good for PWA/web push. |
 | Quiet hours | 9 PM to 9 AM | Avoid late marketing. |

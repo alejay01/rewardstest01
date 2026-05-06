@@ -13,6 +13,7 @@ These sources were checked while preparing the planning package. Pricing and pro
 
 ## SMS
 
+- Telelinux is selected for the pilot, but public API/provider documentation was not confirmed during the initial planning pass. Add the official Telelinux API documentation here once received from the provider.
 - Telnyx messaging pricing: https://telnyx.com/pricing/messaging/
 - Telnyx 10DLC FAQ: https://support.telnyx.com/en/articles/3679260-frequently-asked-questions-about-10dlc
 - Telnyx 10DLC developer docs: https://developers.telnyx.com/docs/messaging/10dlc
