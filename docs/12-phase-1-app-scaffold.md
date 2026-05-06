@@ -31,6 +31,7 @@ https://theboudincompany.com/test/rewards
 | `public_html/test/rewards/_includes/config.local.php` | Real server-only config file. Do not commit this file. |
 | `public_html/test/rewards/_includes/database.php` | PDO connection helper and database status check. |
 | `public_html/test/rewards/assets/css/app.css` | Responsive app styling. |
+| `public_html/test/rewards/assets/css/phase2.css` | Phase 2 customer/QR styling. |
 | `public_html/test/rewards/assets/js/app.js` | PWA registration and coupon-code input cleanup. |
 | `public_html/test/rewards/assets/img/boudin-logo-icon.svg` | Icon-only restaurant logo. |
 | `public_html/test/rewards/assets/img/boudin-logo-wordmark.svg` | Restaurant logo with wordmark. |
