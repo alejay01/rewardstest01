@@ -23,15 +23,15 @@ Last reviewed: 2026-05-06
 ## Pilot Assumptions
 
 - The Rosenberg location is the first deployment.
-- SMS messaging will use Telnyx once account access, API keys, a Messaging Profile, and sender registration are ready.
+- SMS messaging will use Telnyx once account access, API keys, a Messaging Profile, and sender registration are ready. Until then, development should use `log_only` mode.
 - Marketing SMS still needs clear opt-in language, opt-out handling, HELP handling, and business texting registration/compliance review.
 - QR signup should default to this location unless another location is added.
 - Version 1 rewards should use staff-confirmed visits. Spend-based points can be considered later if POS integration is added.
 - Staff redemption should support both QR scanning and manual short-code entry.
 
-## Telnyx Information Needed Before Build
+## Telnyx Information Needed Before Live SMS
 
-To implement the SMS adapter, collect:
+To activate live SMS, collect:
 
 - Telnyx API key.
 - Messaging Profile ID.
@@ -44,6 +44,17 @@ To implement the SMS adapter, collect:
 - Per-message pricing and carrier fee structure.
 - Rate limits and daily/monthly volume limits.
 - Required STOP/HELP behavior.
+
+## SMS Workaround While Telnyx Is Pending
+
+The app can be built and tested without Telnyx credentials by using `log_only` mode:
+
+- Capture customer consent records exactly as the live system will.
+- Generate welcome coupons, reward messages, and campaign previews.
+- Insert outbound SMS attempts into `notification_deliveries` with provider `log_only`.
+- Show queued/logged SMS bodies to admins for internal review.
+- Simulate inbound `STOP`, `HELP`, `JOIN`, and `YES` events from an admin test tool.
+- Block all real external SMS sends until Telnyx setup, 10DLC, and legal pages are complete.
 
 ## Suggested Initial Public Signup Copy
 
