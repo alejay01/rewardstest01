@@ -56,12 +56,19 @@ The later database layer should wire these screens to:
 - `customers`
 - `customer_consents`
 - `signup_sources`
+- `visits`
 - `coupons`
 - `customer_coupons`
 - `coupon_redemptions`
 - `notification_deliveries`
 - `audit_logs`
 - `business_settings`
+
+## SQL Import
+
+Use `database/schema-draft.sql` first, then `database/seed-boudin-company.sql`.
+
+The schema file is ordered for MySQL import and includes reverse-order table drops for a fresh setup. Do not run it over live customer data later unless you intentionally want to rebuild the tables.
 
 ## Safe SMS Behavior
 
