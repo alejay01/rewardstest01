@@ -80,6 +80,7 @@ PushProvider
 
 Then add providers:
 
+- LogOnlySmsProvider
 - TelnyxSmsProvider
 - TwilioSmsProvider
 - BrevoEmailProvider
@@ -88,6 +89,20 @@ Then add providers:
 This makes it possible to start with one provider and switch later without rewriting the reward system.
 
 Telnyx is selected for the first pilot. The adapter should use the Telnyx Messaging API for outbound SMS, inbound message webhooks for STOP/HELP/keyword handling, and delivery status webhooks for message reporting. Keep Telnyx behind the same `SmsProvider` interface so another provider can be used later if pricing, compliance, or API support changes.
+
+## SMS No-Send Development Mode
+
+Until Telnyx login/API details and 10DLC registration are ready, use `LogOnlySmsProvider`.
+
+In `log_only` mode:
+
+- `sendSms` creates a `notification_deliveries` row with provider `log_only`.
+- No external HTTP request is made.
+- Message body, destination, campaign, template, and consent decision are visible in the admin/test screen.
+- `handleInbound` can accept simulated test payloads for `STOP`, `HELP`, `JOIN`, and `YES`.
+- Campaigns can be drafted, previewed, approved, queued, and reported without contacting a carrier.
+
+Live Telnyx sending should require an explicit setting such as `sms.live_send_enabled = 1` plus a configured API key, Messaging Profile ID, sender number, public legal URLs, and completed Telnyx/10DLC setup.
 
 ## Data Flow
 
