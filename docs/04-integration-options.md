@@ -27,7 +27,7 @@ Use Telnyx for:
 - STOP/HELP handling through inbound SMS webhooks.
 - Delivery status updates through messaging webhooks.
 
-Before development, confirm:
+Before live SMS, confirm:
 
 - Telnyx account access and billing.
 - API key and production key storage location.
@@ -44,6 +44,27 @@ Before development, confirm:
 Current public Telnyx messaging pages list SMS pricing starting at $0.004 per message, but final cost depends on sender type, destination, carrier fees, registration fees, and volume.
 
 Telnyx is a good fit because it is API-first, supports send/receive SMS and MMS, supports 10DLC registration workflows, and provides webhooks for inbound messages and delivery status. The restaurant system should still record opt-ins, opt-outs, HELP requests, message attempts, and delivery events internally.
+
+### Development Workaround
+
+Do not block the MVP build on Telnyx credentials or 10DLC. Build against `LogOnlySmsProvider` first.
+
+Allowed before Telnyx is ready:
+
+- QR signup and kiosk signup.
+- SMS consent capture.
+- Coupon generation.
+- Message template rendering.
+- Campaign draft, preview, approval, and queue creation.
+- Logged SMS records in `notification_deliveries`.
+- Simulated inbound STOP/HELP/JOIN/YES handling.
+
+Blocked until Telnyx and legal launch requirements are complete:
+
+- Real marketing SMS sends.
+- Public SMS keyword advertising.
+- Production sender number use.
+- Any campaign that contacts real customers by SMS.
 
 ### Twilio
 
