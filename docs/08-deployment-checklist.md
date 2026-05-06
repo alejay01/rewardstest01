@@ -33,6 +33,15 @@ Last reviewed: 2026-05-06
 - Save screenshots of the signup page, QR flow, and kiosk flow for Telnyx/business texting registration.
 - Store policy and terms version as `boudin-rewards-2026-05-06-v1` unless the published copy changes.
 
+## Development Workaround
+
+- Keep SMS mode set to `log_only` until launch approval.
+- Confirm `notification_deliveries.provider` stores `log_only` for simulated SMS.
+- Confirm no outbound Telnyx API call is made in `log_only` mode.
+- Test campaign drafts, previews, queueing, and reporting using logged SMS only.
+- Test STOP, HELP, JOIN, and YES through a simulated inbound webhook/admin test tool.
+- Add a launch guard that refuses live SMS when API key, sender number, Messaging Profile, legal URLs, or 10DLC status are missing.
+
 ## Provider Setup
 
 ### SMS
@@ -90,6 +99,7 @@ Last reviewed: 2026-05-06
 - First campaign limited to test audience.
 - Privacy policy and rewards terms published.
 - SMS opt-in checkbox uses approved copy and is unchecked by default.
+- SMS mode changed from `log_only` to live only after Telnyx and 10DLC are complete.
 - Opt-out tested.
 - QR redemption scanner tested.
 - Manual short-code redemption tested.
