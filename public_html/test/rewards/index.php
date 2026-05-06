@@ -14,13 +14,13 @@ $checks = [
     'Server time' => (new DateTimeImmutable())->format('Y-m-d H:i:s T'),
 ];
 
-render_header('Status', 'Phase 1 scaffold');
+render_header('Status', 'Rewards status');
 ?>
 <section class="hero-panel">
   <div>
     <h1><?= h($app['name']) ?></h1>
     <p class="lead">
-      Phase 1 is an app shell for signup, wallet, staff redemption, admin preview, and safe MySQL connection checks. It is ready for test hosting upload.
+      The rewards test app is connected to MySQL for signup, wallet lookup, QR signup, and staff-confirmed visit points. SMS remains log-only until Telnyx is ready.
     </p>
     <div class="actions">
       <a class="button primary" href="join.php">Open Signup</a>
@@ -53,15 +53,15 @@ render_header('Status', 'Phase 1 scaffold');
 </section>
 
 <section class="panel">
-  <h2>Phase 1 Routes</h2>
+  <h2>App Routes</h2>
   <div class="card-grid">
     <a class="route-card" href="join.php">
       <strong>Customer Signup</strong>
-      <span>QR/kiosk style opt-in form with consent preview.</span>
+      <span>QR/kiosk style signup form with optional SMS consent capture.</span>
     </a>
     <a class="route-card" href="wallet.php">
       <strong>Customer Wallet</strong>
-      <span>Mock points and coupon display for later database wiring.</span>
+      <span>Phone lookup for real points balance and recent visit activity.</span>
     </a>
     <a class="route-card" href="redeem.php">
       <strong>Staff Redemption</strong>
@@ -69,7 +69,7 @@ render_header('Status', 'Phase 1 scaffold');
     </a>
     <a class="route-card" href="admin.php">
       <strong>Admin Preview</strong>
-      <span>Launch gates, SMS mode, and next build tasks.</span>
+      <span>Launch gates, manual customer add, QR link, and visit point crediting.</span>
     </a>
   </div>
 </section>
