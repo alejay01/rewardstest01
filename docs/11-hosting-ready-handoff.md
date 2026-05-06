@@ -17,10 +17,10 @@ Collect these values before first deployment:
 | Document root | Ready | `public_html/test/rewards` |
 | PHP version | Pending | Prefer PHP 8.1+ where available. |
 | HTTPS/SSL | Pending | Must be enabled before signup, login, PWA, or web push. |
-| MySQL database name | Pending | Keep out of Git. |
-| MySQL username | Pending | Keep out of Git. |
-| MySQL password | Pending | Keep out of Git. |
-| Non-public config path | Pending | Prefer a path outside `public_html`. |
+| MySQL database name | Ready | `cpanel_rewards` |
+| MySQL username | Ready | `cpanel_rewards_user` |
+| MySQL password | Pending | `CHANGE_ME` is only a placeholder. Put the real password in `config.local.php` on the server only. |
+| Non-public config path | Pending | Current scaffold uses blocked `_includes/config.local.php`; prefer a path outside `public_html` later if cPanel allows it. |
 | Upload method | Pending | cPanel Git, SFTP, or File Manager. |
 | Cron command path | Pending | Needed for campaign queue and automation jobs. |
 
@@ -63,32 +63,45 @@ If the host only allows everything under `public_html`, add deny rules for confi
 8. Import `database/schema-draft.sql`.
 9. Import `database/seed-boudin-company.sql`.
 10. Confirm `business_settings.sms.mode` is `log_only`.
-11. Create a non-public config file for database credentials.
+11. Create `_includes/config.local.php` from `_includes/config.example.php` and enter the real password on the server only.
 12. Configure a cron placeholder for queue processing.
 
 ## Local Config Template
 
+The committed PHP template is `public_html/test/rewards/_includes/config.example.php`.
+
 Create the real config file on hosting, not in Git:
 
-```text
-APP_ENV=production
-APP_URL=http://theboudincompany.com/test/rewards
-APP_TIMEZONE=America/Chicago
+```php
+<?php
+declare(strict_types=1);
 
-DB_HOST=localhost
-DB_NAME=[cpanel_database_name]
-DB_USER=[cpanel_database_user]
-DB_PASS=[cpanel_database_password]
-
-SMS_PROVIDER=telnyx
-SMS_MODE=log_only
-SMS_LIVE_SEND_ENABLED=0
-
-TELNYX_API_KEY=
-TELNYX_MESSAGING_PROFILE_ID=
-TELNYX_SENDER_NUMBER=
-TELNYX_10DLC_STATUS=pending
+return [
+    'app' => [
+        'environment' => 'production',
+        'url' => 'http://theboudincompany.com/test/rewards',
+        'timezone' => 'America/Chicago',
+    ],
+    'database' => [
+        'host' => 'localhost',
+        'database' => 'cpanel_rewards',
+        'username' => 'cpanel_rewards_user',
+        'password' => '[real_password_here]',
+        'charset' => 'utf8mb4',
+    ],
+    'sms' => [
+        'provider' => 'telnyx',
+        'mode' => 'log_only',
+        'live_send_enabled' => false,
+        'telnyx_api_key' => '',
+        'telnyx_messaging_profile_id' => '',
+        'telnyx_sender_number' => '',
+        'telnyx_10dlc_status' => 'pending',
+    ],
+];
 ```
+
+The `.htaccess` file blocks direct browser access to `_includes`, but a config path outside `public_html` is still the stronger production option when HostGator allows it.
 
 ## What Can Start Now
 
