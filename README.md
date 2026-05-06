@@ -40,7 +40,7 @@ The recommended approach is a custom PHP/MySQL backend with a Progressive Web Ap
 
 ## Immediate Decisions Needed
 
-1. Hosting is ready. Next setup items are the public domain/subdomain, document root path, PHP version, MySQL database, and non-public config location.
+1. Hosting is ready at `public_html/test/rewards` with public test URL `http://theboudincompany.com/test/rewards`. Next setup items are PHP version, SSL, MySQL database, and non-public config location.
 2. Build can proceed in `log_only` SMS mode while Telnyx account access, API key, Messaging Profile, sender number, webhook URLs, and 10DLC/business texting process are pending.
 3. Before live marketing SMS, confirm Telnyx setup, owner/legal approval, and published SMS opt-in, privacy policy, and rewards terms.
 
