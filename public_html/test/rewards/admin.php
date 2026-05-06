@@ -12,6 +12,22 @@ $launchGates = [
     '10DLC registration' => 'deferred',
     'SMS live send enabled' => 'blocked',
 ];
+$manualSubmitted = $_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'manual_customer_add';
+$manualResult = null;
+$manualFirstName = trim((string)($_POST['first_name'] ?? ''));
+$manualPhone = trim((string)($_POST['phone'] ?? ''));
+$manualEmail = trim((string)($_POST['email'] ?? ''));
+
+if ($manualSubmitted) {
+    $manualResult = rewards_create_customer([
+        'first_name' => $manualFirstName,
+        'phone' => $manualPhone,
+        'email' => $manualEmail,
+        'source' => 'boudin-rosenberg-kiosk',
+        'source_type' => 'admin',
+        'sms_consent' => isset($_POST['sms_consent']),
+    ]);
+}
 
 render_header('Admin', 'Admin preview');
 ?>
@@ -61,6 +77,46 @@ render_header('Admin', 'Admin preview');
   <div class="notice secondary">
     <?= h($dbStatus['message']) ?>
   </div>
+</section>
+
+<section class="panel">
+  <h2>QR Signup</h2>
+  <p>Generate QR codes for the counter, table tents, or kiosk. Each code routes customers to the signup form with a source tag.</p>
+  <div class="form-actions">
+    <a class="button primary" href="qrcode.php">Open QR Generator</a>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Add Customer Record</h2>
+  <p>Use this for a phone-only signup or a staff-entered customer record. SMS remains log-only.</p>
+  <?php if ($manualSubmitted && $manualResult !== null): ?>
+    <div class="notice <?= $manualResult['ok'] ? 'success' : '' ?>">
+      <?= h((string)$manualResult['message']) ?>
+    </div>
+  <?php endif; ?>
+  <form method="post" action="admin.php" class="stack">
+    <input type="hidden" name="action" value="manual_customer_add">
+    <label>
+      First name
+      <input name="first_name" autocomplete="given-name" value="<?= h($manualFirstName) ?>" placeholder="Optional">
+    </label>
+    <label>
+      Mobile number
+      <input name="phone" inputmode="tel" autocomplete="tel" value="<?= h($manualPhone) ?>" placeholder="713-555-0100" required>
+    </label>
+    <label>
+      Email
+      <input name="email" type="email" autocomplete="email" value="<?= h($manualEmail) ?>" placeholder="Optional">
+    </label>
+    <label class="check-row">
+      <input type="checkbox" name="sms_consent" value="1">
+      <span>Customer gave permission to record SMS marketing consent for future log-only messaging. No SMS will be sent yet.</span>
+    </label>
+    <div class="form-actions">
+      <button class="button primary" type="submit">Add Customer</button>
+    </div>
+  </form>
 </section>
 
 <section class="panel">
