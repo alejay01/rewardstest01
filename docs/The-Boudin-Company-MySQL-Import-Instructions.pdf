@@ -1,0 +1,267 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 3481 >>
+stream
+BT
+/F1 10 Tf
+/F1 13 Tf
+1 0 0 1 54 738 Tm (The Boudin Company Rewards MySQL Import Instructions) Tj
+/F1 10 Tf
+1 0 0 1 54 724 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 717 Tm (Last reviewed: 2026-05-06) Tj
+/F1 10 Tf
+1 0 0 1 54 703 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 696 Tm (Use these instructions to create/update the first rewards database structure in HostGator) Tj
+/F1 10 Tf
+1 0 0 1 54 682 Tm (cPanel.) Tj
+/F1 10 Tf
+1 0 0 1 54 668 Tm () Tj
+/F1 11 Tf
+1 0 0 1 54 661 Tm (Database Details) Tj
+/F1 10 Tf
+1 0 0 1 54 647 Tm (Host: localhost) Tj
+/F1 10 Tf
+1 0 0 1 54 633 Tm (Database: cpanel_rewards) Tj
+/F1 10 Tf
+1 0 0 1 54 619 Tm (Username: cpanel_rewards_user) Tj
+/F1 10 Tf
+1 0 0 1 54 605 Tm (App config file: public_html/test/rewards/_includes/config.local.php) Tj
+/F1 10 Tf
+1 0 0 1 54 591 Tm (Public test URL: http://theboudincompany.com/test/rewards) Tj
+/F1 10 Tf
+1 0 0 1 54 577 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 570 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 563 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 556 Tm (Do not put the MySQL password in GitHub, SQL files, screenshots, or shared documents.) Tj
+/F1 10 Tf
+1 0 0 1 54 542 Tm () Tj
+/F1 11 Tf
+1 0 0 1 54 535 Tm (Before Importing) Tj
+/F1 10 Tf
+1 0 0 1 54 521 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 514 Tm (1. Log in to HostGator cPanel.) Tj
+/F1 10 Tf
+1 0 0 1 54 500 Tm (2. Open phpMyAdmin.) Tj
+/F1 10 Tf
+1 0 0 1 54 486 Tm (3. Select the database named cpanel_rewards.) Tj
+/F1 10 Tf
+1 0 0 1 54 472 Tm (4. Confirm this is the test rewards database.) Tj
+/F1 10 Tf
+1 0 0 1 54 458 Tm (5. If there is important customer data already in the database, stop before importing. The) Tj
+/F1 10 Tf
+1 0 0 1 54 444 Tm (   current schema file is for fresh setup and drops/recreates rewards tables.) Tj
+/F1 10 Tf
+1 0 0 1 54 430 Tm () Tj
+/F1 11 Tf
+1 0 0 1 54 423 Tm (Import Order) Tj
+/F1 10 Tf
+1 0 0 1 54 409 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 402 Tm (Run these files in this exact order:) Tj
+/F1 10 Tf
+1 0 0 1 54 388 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 381 Tm (1. database/schema-draft.sql) Tj
+/F1 10 Tf
+1 0 0 1 54 367 Tm (2. database/seed-boudin-company.sql) Tj
+/F1 10 Tf
+1 0 0 1 54 353 Tm () Tj
+/F1 11 Tf
+1 0 0 1 54 346 Tm (Import schema-draft.sql) Tj
+/F1 10 Tf
+1 0 0 1 54 332 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 325 Tm (1. In phpMyAdmin, click the Import tab.) Tj
+/F1 10 Tf
+1 0 0 1 54 311 Tm (2. Choose database/schema-draft.sql.) Tj
+/F1 10 Tf
+1 0 0 1 54 297 Tm (3. Leave the format as SQL.) Tj
+/F1 10 Tf
+1 0 0 1 54 283 Tm (4. Click Import or Go.) Tj
+/F1 10 Tf
+1 0 0 1 54 269 Tm (5. Wait for the success message.) Tj
+/F1 10 Tf
+1 0 0 1 54 255 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 248 Tm (This file creates the table structure for:) Tj
+/F1 10 Tf
+1 0 0 1 54 234 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 227 Tm (  - Business and location setup) Tj
+/F1 10 Tf
+1 0 0 1 54 213 Tm (  - Customer signup and consent tracking) Tj
+/F1 10 Tf
+1 0 0 1 54 199 Tm (  - Visit-based points) Tj
+/F1 10 Tf
+1 0 0 1 54 185 Tm (  - Points ledger) Tj
+/F1 10 Tf
+1 0 0 1 54 171 Tm (  - Coupons and redemptions by QR or short code) Tj
+/F1 10 Tf
+1 0 0 1 54 157 Tm (  - Notification queue foundation) Tj
+/F1 10 Tf
+1 0 0 1 54 143 Tm (  - Push subscriptions) Tj
+/F1 10 Tf
+1 0 0 1 54 129 Tm (  - Audit logs) Tj
+/F1 10 Tf
+1 0 0 1 54 115 Tm () Tj
+/F1 11 Tf
+1 0 0 1 54 108 Tm (Import seed-boudin-company.sql) Tj
+/F1 10 Tf
+1 0 0 1 54 94 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 87 Tm (1. Stay inside the same database: cpanel_rewards.) Tj
+/F1 10 Tf
+1 0 0 1 54 73 Tm (2. Click the Import tab again.) Tj
+/F1 10 Tf
+1 0 0 1 54 59 Tm (3. Choose database/seed-boudin-company.sql.) Tj
+ET
+endstream
+endobj
+3 0 obj
+<< /Length 3184 >>
+stream
+BT
+/F1 10 Tf
+/F1 10 Tf
+1 0 0 1 54 738 Tm (4. Click Import or Go.) Tj
+/F1 10 Tf
+1 0 0 1 54 724 Tm (5. Wait for the success message.) Tj
+/F1 10 Tf
+1 0 0 1 54 710 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 703 Tm (This file adds the starter data for The Boudin Company in Rosenberg, Texas.) Tj
+/F1 10 Tf
+1 0 0 1 54 689 Tm () Tj
+/F1 11 Tf
+1 0 0 1 54 682 Tm (After Importing) Tj
+/F1 10 Tf
+1 0 0 1 54 668 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 661 Tm (1. Confirm these tables exist:) Tj
+/F1 10 Tf
+1 0 0 1 54 647 Tm (  - businesses) Tj
+/F1 10 Tf
+1 0 0 1 54 633 Tm (  - locations) Tj
+/F1 10 Tf
+1 0 0 1 54 619 Tm (  - business_settings) Tj
+/F1 10 Tf
+1 0 0 1 54 605 Tm (  - customers) Tj
+/F1 10 Tf
+1 0 0 1 54 591 Tm (  - customer_consents) Tj
+/F1 10 Tf
+1 0 0 1 54 577 Tm (  - signup_sources) Tj
+/F1 10 Tf
+1 0 0 1 54 563 Tm (  - reward_rules) Tj
+/F1 10 Tf
+1 0 0 1 54 549 Tm (  - visits) Tj
+/F1 10 Tf
+1 0 0 1 54 535 Tm (  - points_ledger) Tj
+/F1 10 Tf
+1 0 0 1 54 521 Tm (  - coupon_templates) Tj
+/F1 10 Tf
+1 0 0 1 54 507 Tm (  - coupons) Tj
+/F1 10 Tf
+1 0 0 1 54 493 Tm (  - customer_coupons) Tj
+/F1 10 Tf
+1 0 0 1 54 479 Tm (  - coupon_redemptions) Tj
+/F1 10 Tf
+1 0 0 1 54 465 Tm (  - message_templates) Tj
+/F1 10 Tf
+1 0 0 1 54 451 Tm (  - notification_deliveries) Tj
+/F1 10 Tf
+1 0 0 1 54 437 Tm (  - push_subscriptions) Tj
+/F1 10 Tf
+1 0 0 1 54 423 Tm (  - audit_logs) Tj
+/F1 10 Tf
+1 0 0 1 54 409 Tm (2. Open http://theboudincompany.com/test/rewards.) Tj
+/F1 10 Tf
+1 0 0 1 54 395 Tm (3. Confirm the Environment Check shows the database name.) Tj
+/F1 10 Tf
+1 0 0 1 54 381 Tm (4. Open http://theboudincompany.com/test/rewards/admin.php.) Tj
+/F1 10 Tf
+1 0 0 1 54 367 Tm (5. Confirm the Database Status section shows the connection as ready.) Tj
+/F1 10 Tf
+1 0 0 1 54 353 Tm () Tj
+/F1 11 Tf
+1 0 0 1 54 346 Tm (Troubleshooting) Tj
+/F1 10 Tf
+1 0 0 1 54 332 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 325 Tm (If the app says the database config is missing, upload or create:) Tj
+/F1 10 Tf
+1 0 0 1 54 311 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 304 Tm (`text) Tj
+/F1 10 Tf
+1 0 0 1 54 290 Tm (public_html/test/rewards/_includes/config.local.php) Tj
+/F1 10 Tf
+1 0 0 1 54 276 Tm (`) Tj
+/F1 10 Tf
+1 0 0 1 54 262 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 255 Tm (If the app says the database connection is not ready:) Tj
+/F1 10 Tf
+1 0 0 1 54 241 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 234 Tm (1. Confirm the database name is cpanel_rewards.) Tj
+/F1 10 Tf
+1 0 0 1 54 220 Tm (2. Confirm the username is cpanel_rewards_user.) Tj
+/F1 10 Tf
+1 0 0 1 54 206 Tm (3. Confirm the real password is in config.local.php.) Tj
+/F1 10 Tf
+1 0 0 1 54 192 Tm (4. Confirm the database user has permissions on cpanel_rewards.) Tj
+/F1 10 Tf
+1 0 0 1 54 178 Tm (5. Confirm the MySQL host is localhost.) Tj
+/F1 10 Tf
+1 0 0 1 54 164 Tm () Tj
+/F1 11 Tf
+1 0 0 1 54 157 Tm (Safety Notes) Tj
+/F1 10 Tf
+1 0 0 1 54 143 Tm () Tj
+/F1 10 Tf
+1 0 0 1 54 136 Tm (  - Keep SMS in log_only mode until Telnyx, 10DLC, and legal approval are complete.) Tj
+/F1 10 Tf
+1 0 0 1 54 122 Tm (  - Do not run schema-draft.sql over live production customer data unless you intentionally) Tj
+/F1 10 Tf
+1 0 0 1 54 108 Tm (    want to rebuild the database.) Tj
+/F1 10 Tf
+1 0 0 1 54 94 Tm (  - Keep config.local.php off GitHub.) Tj
+ET
+endstream
+endobj
+4 0 obj
+<< /Type /Page /Parent 6 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 6 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 3 0 R >>
+endobj
+6 0 obj
+<< /Type /Pages /Kids [4 0 R 5 0 R] /Count 2 >>
+endobj
+7 0 obj
+<< /Type /Catalog /Pages 6 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000003612 00000 n 
+0000006848 00000 n 
+0000006974 00000 n 
+0000007100 00000 n 
+0000007163 00000 n 
+trailer
+<< /Size 8 /Root 7 0 R >>
+startxref
+7212
+%%EOF
