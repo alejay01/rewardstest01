@@ -13,8 +13,8 @@ Collect these values before first deployment:
 | Item | Status | Notes |
 | --- | --- | --- |
 | Hosting account | Ready | HostGator/cPanel is ready. |
-| Public domain/subdomain | Pending | Example: `rewards.[domain]` or `[domain]/rewards`. |
-| Document root | Pending | Needed for file upload and routing. |
+| Public URL | Ready | `http://theboudincompany.com/test/rewards` |
+| Document root | Ready | `public_html/test/rewards` |
 | PHP version | Pending | Prefer PHP 8.1+ where available. |
 | HTTPS/SSL | Pending | Must be enabled before signup, login, PWA, or web push. |
 | MySQL database name | Pending | Keep out of Git. |
@@ -29,7 +29,7 @@ Collect these values before first deployment:
 Use a public document root only for browser-accessible files:
 
 ```text
-public_html/rewards/
+public_html/test/rewards/
   index.php
   assets/
   manifest.json
@@ -53,17 +53,18 @@ If the host only allows everything under `public_html`, add deny rules for confi
 
 ## First cPanel Actions
 
-1. Create the rewards subdomain or folder.
-2. Enable SSL.
-3. Select PHP 8.1+ if available.
-4. Create the MySQL database.
-5. Create the MySQL user.
-6. Assign the user to the database with least necessary permissions.
-7. Import `database/schema-draft.sql`.
-8. Import `database/seed-boudin-company.sql`.
-9. Confirm `business_settings.sms.mode` is `log_only`.
-10. Create a non-public config file for database credentials.
-11. Configure a cron placeholder for queue processing.
+1. Confirm `public_html/test/rewards` exists.
+2. Open `http://theboudincompany.com/test/rewards` after uploading the scaffold.
+3. Enable SSL and switch the final app URL to HTTPS when available.
+4. Select PHP 8.1+ if available.
+5. Create the MySQL database.
+6. Create the MySQL user.
+7. Assign the user to the database with least necessary permissions.
+8. Import `database/schema-draft.sql`.
+9. Import `database/seed-boudin-company.sql`.
+10. Confirm `business_settings.sms.mode` is `log_only`.
+11. Create a non-public config file for database credentials.
+12. Configure a cron placeholder for queue processing.
 
 ## Local Config Template
 
@@ -71,7 +72,7 @@ Create the real config file on hosting, not in Git:
 
 ```text
 APP_ENV=production
-APP_URL=https://[domain-or-subdomain]
+APP_URL=http://theboudincompany.com/test/rewards
 APP_TIMEZONE=America/Chicago
 
 DB_HOST=localhost
